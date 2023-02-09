@@ -1,0 +1,1092 @@
+{
+   "type": "CIMLayerDocument",
+   "version": "3.0.0",
+   "build": 36056,
+   "layers": [
+      "CIMPATH=westtool/usa_structures.json"
+   ],
+   "layerDefinitions": [{
+         "type": "CIMFeatureLayer",
+         "name": "USA_Structures",
+         "uRI": "CIMPATH=westtool/usa_structures.json",
+         "sourceURI": "0ec8512ad21e4bb987d7e848d14e7e24",
+         "sourceModifiedTime": {
+            "type": "TimeInstant"
+         },
+         "useSourceMetadata": true,
+         "attribution": "Oak Ridge National Laboratory (ORNL); Federal Emergency Management Agency (FEMA) Geospatial Response Office",
+         "description": "&lt;div style=\"text-align:Left;\"&gt;&lt;div&gt;&lt;p&gt;&lt;span&gt;This feature class contains structure (building) polygons for the U.S. States and its territories. This update is provided with improved feature quality, greater temporal relevancy, and/or more complete attribution, where available. The structures (buildings) are represented by polygon geometries with an attribute table described elsewhere in the metadata.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;",
+         "layerElevation": {
+            "type": "CIMLayerElevationSurface",
+            "elevationSurfaceLayerURI": "CIMPATH=Map/16df13fea8a64808922fb08541373c2c.json"
+         },
+         "expanded": true,
+         "layerType": "Operational",
+         "minScale": 2042691,
+         "showLegends": true,
+         "transparency": 25,
+         "visibility": true,
+         "displayCacheType": "Permanent",
+         "maxDisplayCacheAge": 5,
+         "popupInfo": {
+            "type": "CIMPopupInfo",
+            "expressionInfos": [{
+                  "type": "CIMExpressionInfo",
+                  "title": "Building occupancy classification",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature[\"OCC_CLS\"])\nvar b = $feature[\"OCC_CLS\"]\n\nIif(e == true, \"Unknown Occupancy\", b)",
+                  "name": "expr0",
+                  "returnType": "String"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Primary occupancy",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature[\"PRIM_OCC\"])\nvar p = $feature[\"PRIM_OCC\"]\n\nIif(e == true, \"Unknown Occupancy\", p)",
+                  "name": "expr1",
+                  "returnType": "String"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "County",
+                  "expression": "//expression to convert the combined State and County FIPS codes\r\n//to text.\r\n\r\nvar a = $feature.FIPS\r\n\r\nWhen(\r\na == \"01001\", \"Autauga County\", \r\na == \"01003\", \"Baldwin County\", \r\na == \"01005\", \"Barbour County\", \r\na == \"01007\", \"Bibb County\", \r\na == \"01009\", \"Blount County\", \r\na == \"01011\", \"Bullock County\", \r\na == \"01013\", \"Butler County\", \r\na == \"01015\", \"Calhoun County\", \r\na == \"01017\", \"Chambers County\", \r\na == \"01019\", \"Cherokee County\", \r\na == \"01021\", \"Chilton County\", \r\na == \"01023\", \"Choctaw County\", \r\na == \"01025\", \"Clarke County\", \r\na == \"01027\", \"Clay County\", \r\na == \"01029\", \"Cleburne County\", \r\na == \"01031\", \"Coffee County\", \r\na == \"01033\", \"Colbert County\", \r\na == \"01035\", \"Conecuh County\", \r\na == \"01037\", \"Coosa County\", \r\na == \"01039\", \"Covington County\", \r\na == \"01041\", \"Crenshaw County\", \r\na == \"01043\", \"Cullman County\", \r\na == \"01045\", \"Dale County\", \r\na == \"01047\", \"Dallas County\", \r\na == \"01049\", \"DeKalb County\", \r\na == \"01051\", \"Elmore County\", \r\na == \"01053\", \"Escambia County\", \r\na == \"01055\", \"Etowah County\", \r\na == \"01057\", \"Fayette County\", \r\na == \"01059\", \"Franklin County\", \r\na == \"01061\", \"Geneva County\", \r\na == \"01063\", \"Greene County\", \r\na == \"01065\", \"Hale County\", \r\na == \"01067\", \"Henry County\", \r\na == \"01069\", \"Houston County\", \r\na == \"01071\", \"Jackson County\", \r\na == \"01073\", \"Jefferson County\", \r\na == \"01075\", \"Lamar County\", \r\na == \"01077\", \"Lauderdale County\", \r\na == \"01079\", \"Lawrence County\", \r\na == \"01081\", \"Lee County\", \r\na == \"01083\", \"Limestone County\", \r\na == \"01085\", \"Lowndes County\", \r\na == \"01087\", \"Macon County\", \r\na == \"01089\", \"Madison County\", \r\na == \"01091\", \"Marengo County\", \r\na == \"01093\", \"Marion County\", \r\na == \"01095\", \"Marshall County\", \r\na == \"01097\", \"Mobile County\", \r\na == \"01099\", \"Monroe County\", \r\na == \"01101\", \"Montgomery County\", \r\na == \"01103\", \"Morgan County\", \r\na == \"01105\", \"Perry County\", \r\na == \"01107\", \"Pickens County\", \r\na == \"01109\", \"Pike County\", \r\na == \"01111\", \"Randolph County\", \r\na == \"01113\", \"Russell County\", \r\na == \"01115\", \"St. Clair County\", \r\na == \"01117\", \"Shelby County\", \r\na == \"01119\", \"Sumter County\", \r\na == \"01121\", \"Talladega County\", \r\na == \"01123\", \"Tallapoosa County\", \r\na == \"01125\", \"Tuscaloosa County\", \r\na == \"01127\", \"Walker County\", \r\na == \"01129\", \"Washington County\", \r\na == \"01131\", \"Wilcox County\", \r\na == \"01133\", \"Winston County\", \r\na == \"02013\", \"Aleutians East Borough\", \r\na == \"02016\", \"Aleutians West Census Area\", \r\na == \"02020\", \"Anchorage Municipality\", \r\na == \"02050\", \"Bethel Census Area\", \r\na == \"02060\", \"Bristol Bay Borough\", \r\na == \"02063\", \"Chugach Census Area\", \r\na == \"02066\", \"Copper River Census Area\", \r\na == \"02068\", \"Denali Borough\", \r\na == \"02070\", \"Dillingham Census Area\", \r\na == \"02090\", \"Fairbanks North Star Borough\", \r\na == \"02100\", \"Haines Borough\", \r\na == \"02105\", \"Hoonah-Angoon Census Area\", \r\na == \"02110\", \"Juneau City and Borough\", \r\na == \"02122\", \"Kenai Peninsula Borough\", \r\na == \"02130\", \"Ketchikan Gateway Borough\", \r\na == \"02150\", \"Kodiak Island Borough\", \r\na == \"02158\", \"Kusilvak Census Area\", \r\na == \"02164\", \"Lake and Peninsula Borough\", \r\na == \"02170\", \"Matanuska-Susitna Borough\", \r\na == \"02180\", \"Nome Census Area\", \r\na == \"02185\", \"North Slope Borough\", \r\na == \"02188\", \"Northwest Arctic Borough\", \r\na == \"02195\", \"Petersburg Borough\", \r\na == \"02198\", \"Prince of Wales-Hyder Census Area\", \r\na == \"02220\", \"Sitka City and Borough\", \r\na == \"02230\", \"Skagway Municipality\", \r\na == \"02240\", \"Southeast Fairbanks Census Area\", \r\na == \"02275\", \"Wrangell City and Borough\", \r\na == \"02282\", \"Yakutat City and Borough\", \r\na == \"02290\", \"Yukon-Koyukuk Census Area\", \r\na == \"04001\", \"Apache County\", \r\na == \"04003\", \"Cochise County\", \r\na == \"04005\", \"Coconino County\", \r\na == \"04007\", \"Gila County\", \r\na == \"04009\", \"Graham County\", \r\na == \"04011\", \"Greenlee County\", \r\na == \"04012\", \"La Paz County\", \r\na == \"04013\", \"Maricopa County\", \r\na == \"04015\", \"Mohave County\", \r\na == \"04017\", \"Navajo County\", \r\na == \"04019\", \"Pima County\", \r\na == \"04021\", \"Pinal County\", \r\na == \"04023\", \"Santa Cruz County\", \r\na == \"04025\", \"Yavapai County\", \r\na == \"04027\", \"Yuma County\", \r\na == \"05001\", \"Arkansas County\", \r\na == \"05003\", \"Ashley County\", \r\na == \"05005\", \"Baxter County\", \r\na == \"05007\", \"Benton County\", \r\na == \"05009\", \"Boone County\", \r\na == \"05011\", \"Bradley County\", \r\na == \"05013\", \"Calhoun County\", \r\na == \"05015\", \"Carroll County\", \r\na == \"05017\", \"Chicot County\", \r\na == \"05019\", \"Clark County\", \r\na == \"05021\", \"Clay County\", \r\na == \"05023\", \"Cleburne County\", \r\na == \"05025\", \"Cleveland County\", \r\na == \"05027\", \"Columbia County\", \r\na == \"05029\", \"Conway County\", \r\na == \"05031\", \"Craighead County\", \r\na == \"05033\", \"Crawford County\", \r\na == \"05035\", \"Crittenden County\", \r\na == \"05037\", \"Cross County\", \r\na == \"05039\", \"Dallas County\", \r\na == \"05041\", \"Desha County\", \r\na == \"05043\", \"Drew County\", \r\na == \"05045\", \"Faulkner County\", \r\na == \"05047\", \"Franklin County\", \r\na == \"05049\", \"Fulton County\", \r\na == \"05051\", \"Garland County\", \r\na == \"05053\", \"Grant County\", \r\na == \"05055\", \"Greene County\", \r\na == \"05057\", \"Hempstead County\", \r\na == \"05059\", \"Hot Spring County\", \r\na == \"05061\", \"Howard County\", \r\na == \"05063\", \"Independence County\", \r\na == \"05065\", \"Izard County\", \r\na == \"05067\", \"Jackson County\", \r\na == \"05069\", \"Jefferson County\", \r\na == \"05071\", \"Johnson County\", \r\na == \"05073\", \"Lafayette County\", \r\na == \"05075\", \"Lawrence County\", \r\na == \"05077\", \"Lee County\", \r\na == \"05079\", \"Lincoln County\", \r\na == \"05081\", \"Little River County\", \r\na == \"05083\", \"Logan County\", \r\na == \"05085\", \"Lonoke County\", \r\na == \"05087\", \"Madison County\", \r\na == \"05089\", \"Marion County\", \r\na == \"05091\", \"Miller County\", \r\na == \"05093\", \"Mississippi County\", \r\na == \"05095\", \"Monroe County\", \r\na == \"05097\", \"Montgomery County\", \r\na == \"05099\", \"Nevada County\", \r\na == \"05101\", \"Newton County\", \r\na == \"05103\", \"Ouachita County\", \r\na == \"05105\", \"Perry County\", \r\na == \"05107\", \"Phillips County\", \r\na == \"05109\", \"Pike County\", \r\na == \"05111\", \"Poinsett County\", \r\na == \"05113\", \"Polk County\", \r\na == \"05115\", \"Pope County\", \r\na == \"05117\", \"Prairie County\", \r\na == \"05119\", \"Pulaski County\", \r\na == \"05121\", \"Randolph County\", \r\na == \"05123\", \"St. Francis County\", \r\na == \"05125\", \"Saline County\", \r\na == \"05127\", \"Scott County\", \r\na == \"05129\", \"Searcy County\", \r\na == \"05131\", \"Sebastian County\", \r\na == \"05133\", \"Sevier County\", \r\na == \"05135\", \"Sharp County\", \r\na == \"05137\", \"Stone County\", \r\na == \"05139\", \"Union County\", \r\na == \"05141\", \"Van Buren County\", \r\na == \"05143\", \"Washington County\", \r\na == \"05145\", \"White County\", \r\na == \"05147\", \"Woodruff County\", \r\na == \"05149\", \"Yell County\", \r\na == \"06001\", \"Alameda County\", \r\na == \"06003\", \"Alpine County\", \r\na == \"06005\", \"Amador County\", \r\na == \"06007\", \"Butte County\", \r\na == \"06009\", \"Calaveras County\", \r\na == \"06011\", \"Colusa County\", \r\na == \"06013\", \"Contra Costa County\", \r\na == \"06015\", \"Del Norte County\", \r\na == \"06017\", \"El Dorado County\", \r\na == \"06019\", \"Fresno County\", \r\na == \"06021\", \"Glenn County\", \r\na == \"06023\", \"Humboldt County\", \r\na == \"06025\", \"Imperial County\", \r\na == \"06027\", \"Inyo County\", \r\na == \"06029\", \"Kern County\", \r\na == \"06031\", \"Kings County\", \r\na == \"06033\", \"Lake County\", \r\na == \"06035\", \"Lassen County\", \r\na == \"06037\", \"Los Angeles County\", \r\na == \"06039\", \"Madera County\", \r\na == \"06041\", \"Marin County\", \r\na == \"06043\", \"Mariposa County\", \r\na == \"06045\", \"Mendocino County\", \r\na == \"06047\", \"Merced County\", \r\na == \"06049\", \"Modoc County\", \r\na == \"06051\", \"Mono County\", \r\na == \"06053\", \"Monterey County\", \r\na == \"06055\", \"Napa County\", \r\na == \"06057\", \"Nevada County\", \r\na == \"06059\", \"Orange County\", \r\na == \"06061\", \"Placer County\", \r\na == \"06063\", \"Plumas County\", \r\na == \"06065\", \"Riverside County\", \r\na == \"06067\", \"Sacramento County\", \r\na == \"06069\", \"San Benito County\", \r\na == \"06071\", \"San Bernardino County\", \r\na == \"06073\", \"San Diego County\", \r\na == \"06075\", \"San Francisco County\", \r\na == \"06077\", \"San Joaquin County\", \r\na == \"06079\", \"San Luis Obispo County\", \r\na == \"06081\", \"San Mateo County\", \r\na == \"06083\", \"Santa Barbara County\", \r\na == \"06085\", \"Santa Clara County\", \r\na == \"06087\", \"Santa Cruz County\", \r\na == \"06089\", \"Shasta County\", \r\na == \"06091\", \"Sierra County\", \r\na == \"06093\", \"Siskiyou County\", \r\na == \"06095\", \"Solano County\", \r\na == \"06097\", \"Sonoma County\", \r\na == \"06099\", \"Stanislaus County\", \r\na == \"06101\", \"Sutter County\", \r\na == \"06103\", \"Tehama County\", \r\na == \"06105\", \"Trinity County\", \r\na == \"06107\", \"Tulare County\", \r\na == \"06109\", \"Tuolumne County\", \r\na == \"06111\", \"Ventura County\", \r\na == \"06113\", \"Yolo County\", \r\na == \"06115\", \"Yuba County\", \r\na == \"08001\", \"Adams County\", \r\na == \"08003\", \"Alamosa County\", \r\na == \"08005\", \"Arapahoe County\", \r\na == \"08007\", \"Archuleta County\", \r\na == \"08009\", \"Baca County\", \r\na == \"08011\", \"Bent County\", \r\na == \"08013\", \"Boulder County\", \r\na == \"08014\", \"Broomfield County\", \r\na == \"08015\", \"Chaffee County\", \r\na == \"08017\", \"Cheyenne County\", \r\na == \"08019\", \"Clear Creek County\", \r\na == \"08021\", \"Conejos County\", \r\na == \"08023\", \"Costilla County\", \r\na == \"08025\", \"Crowley County\", \r\na == \"08027\", \"Custer County\", \r\na == \"08029\", \"Delta County\", \r\na == \"08031\", \"Denver County\", \r\na == \"08033\", \"Dolores County\", \r\na == \"08035\", \"Douglas County\", \r\na == \"08037\", \"Eagle County\", \r\na == \"08039\", \"Elbert County\", \r\na == \"08041\", \"El Paso County\", \r\na == \"08043\", \"Fremont County\", \r\na == \"08045\", \"Garfield County\", \r\na == \"08047\", \"Gilpin County\", \r\na == \"08049\", \"Grand County\", \r\na == \"08051\", \"Gunnison County\", \r\na == \"08053\", \"Hinsdale County\", \r\na == \"08055\", \"Huerfano County\", \r\na == \"08057\", \"Jackson County\", \r\na == \"08059\", \"Jefferson County\", \r\na == \"08061\", \"Kiowa County\", \r\na == \"08063\", \"Kit Carson County\", \r\na == \"08065\", \"Lake County\", \r\na == \"08067\", \"La Plata County\", \r\na == \"08069\", \"Larimer County\", \r\na == \"08071\", \"Las Animas County\", \r\na == \"08073\", \"Lincoln County\", \r\na == \"08075\", \"Logan County\", \r\na == \"08077\", \"Mesa County\", \r\na == \"08079\", \"Mineral County\", \r\na == \"08081\", \"Moffat County\", \r\na == \"08083\", \"Montezuma County\", \r\na == \"08085\", \"Montrose County\", \r\na == \"08087\", \"Morgan County\", \r\na == \"08089\", \"Otero County\", \r\na == \"08091\", \"Ouray County\", \r\na == \"08093\", \"Park County\", \r\na == \"08095\", \"Phillips County\", \r\na == \"08097\", \"Pitkin County\", \r\na == \"08099\", \"Prowers County\", \r\na == \"08101\", \"Pueblo County\", \r\na == \"08103\", \"Rio Blanco County\", \r\na == \"08105\", \"Rio Grande County\", \r\na == \"08107\", \"Routt County\", \r\na == \"08109\", \"Saguache County\", \r\na == \"08111\", \"San Juan County\", \r\na == \"08113\", \"San Miguel County\", \r\na == \"08115\", \"Sedgwick County\", \r\na == \"08117\", \"Summit County\", \r\na == \"08119\", \"Teller County\", \r\na == \"08121\", \"Washington County\", \r\na == \"08123\", \"Weld County\", \r\na == \"08125\", \"Yuma County\", \r\na == \"09001\", \"Fairfield County\", \r\na == \"09003\", \"Hartford County\", \r\na == \"09005\", \"Litchfield County\", \r\na == \"09007\", \"Middlesex County\", \r\na == \"09009\", \"New Haven County\", \r\na == \"09011\", \"New London County\", \r\na == \"09013\", \"Tolland County\", \r\na == \"09015\", \"Windham County\", \r\na == \"10001\", \"Kent County\", \r\na == \"10003\", \"New Castle County\", \r\na == \"10005\", \"Sussex County\", \r\na == \"11001\", \"District of Columbia\", \r\na == \"12001\", \"Alachua County\", \r\na == \"12003\", \"Baker County\", \r\na == \"12005\", \"Bay County\", \r\na == \"12007\", \"Bradford County\", \r\na == \"12009\", \"Brevard County\", \r\na == \"12011\", \"Broward County\", \r\na == \"12013\", \"Calhoun County\", \r\na == \"12015\", \"Charlotte County\", \r\na == \"12017\", \"Citrus County\", \r\na == \"12019\", \"Clay County\", \r\na == \"12021\", \"Collier County\", \r\na == \"12023\", \"Columbia County\", \r\na == \"12027\", \"DeSoto County\", \r\na == \"12029\", \"Dixie County\", \r\na == \"12031\", \"Duval County\", \r\na == \"12033\", \"Escambia County\", \r\na == \"12035\", \"Flagler County\", \r\na == \"12037\", \"Franklin County\", \r\na == \"12039\", \"Gadsden County\", \r\na == \"12041\", \"Gilchrist County\", \r\na == \"12043\", \"Glades County\", \r\na == \"12045\", \"Gulf County\", \r\na == \"12047\", \"Hamilton County\", \r\na == \"12049\", \"Hardee County\", \r\na == \"12051\", \"Hendry County\", \r\na == \"12053\", \"Hernando County\", \r\na == \"12055\", \"Highlands County\", \r\na == \"12057\", \"Hillsborough County\", \r\na == \"12059\", \"Holmes County\", \r\na == \"12061\", \"Indian River County\", \r\na == \"12063\", \"Jackson County\", \r\na == \"12065\", \"Jefferson County\", \r\na == \"12067\", \"Lafayette County\", \r\na == \"12069\", \"Lake County\", \r\na == \"12071\", \"Lee County\", \r\na == \"12073\", \"Leon County\", \r\na == \"12075\", \"Levy County\", \r\na == \"12077\", \"Liberty County\", \r\na == \"12079\", \"Madison County\", \r\na == \"12081\", \"Manatee County\", \r\na == \"12083\", \"Marion County\", \r\na == \"12085\", \"Martin County\", \r\na == \"12086\", \"Miami-Dade County\", \r\na == \"12087\", \"Monroe County\", \r\na == \"12089\", \"Nassau County\", \r\na == \"12091\", \"Okaloosa County\", \r\na == \"12093\", \"Okeechobee County\", \r\na == \"12095\", \"Orange County\", \r\na == \"12097\", \"Osceola County\", \r\na == \"12099\", \"Palm Beach County\", \r\na == \"12101\", \"Pasco County\", \r\na == \"12103\", \"Pinellas County\", \r\na == \"12105\", \"Polk County\", \r\na == \"12107\", \"Putnam County\", \r\na == \"12109\", \"St. Johns County\", \r\na == \"12111\", \"St. Lucie County\", \r\na == \"12113\", \"Santa Rosa County\", \r\na == \"12115\", \"Sarasota County\", \r\na == \"12117\", \"Seminole County\", \r\na == \"12119\", \"Sumter County\", \r\na == \"12121\", \"Suwannee County\", \r\na == \"12123\", \"Taylor County\", \r\na == \"12125\", \"Union County\", \r\na == \"12127\", \"Volusia County\", \r\na == \"12129\", \"Wakulla County\", \r\na == \"12131\", \"Walton County\", \r\na == \"12133\", \"Washington County\", \r\na == \"13001\", \"Appling County\", \r\na == \"13003\", \"Atkinson County\", \r\na == \"13005\", \"Bacon County\", \r\na == \"13007\", \"Baker County\", \r\na == \"13009\", \"Baldwin County\", \r\na == \"13011\", \"Banks County\", \r\na == \"13013\", \"Barrow County\", \r\na == \"13015\", \"Bartow County\", \r\na == \"13017\", \"Ben Hill County\", \r\na == \"13019\", \"Berrien County\", \r\na == \"13021\", \"Bibb County\", \r\na == \"13023\", \"Bleckley County\", \r\na == \"13025\", \"Brantley County\", \r\na == \"13027\", \"Brooks County\", \r\na == \"13029\", \"Bryan County\", \r\na == \"13031\", \"Bulloch County\", \r\na == \"13033\", \"Burke County\", \r\na == \"13035\", \"Butts County\", \r\na == \"13037\", \"Calhoun County\", \r\na == \"13039\", \"Camden County\", \r\na == \"13043\", \"Candler County\", \r\na == \"13045\", \"Carroll County\", \r\na == \"13047\", \"Catoosa County\", \r\na == \"13049\", \"Charlton County\", \r\na == \"13051\", \"Chatham County\", \r\na == \"13053\", \"Chattahoochee County\", \r\na == \"13055\", \"Chattooga County\", \r\na == \"13057\", \"Cherokee County\", \r\na == \"13059\", \"Clarke County\", \r\na == \"13061\", \"Clay County\", \r\na == \"13063\", \"Clayton County\", \r\na == \"13065\", \"Clinch County\", \r\na == \"13067\", \"Cobb County\", \r\na == \"13069\", \"Coffee County\", \r\na == \"13071\", \"Colquitt County\", \r\na == \"13073\", \"Columbia County\", \r\na == \"13075\", \"Cook County\", \r\na == \"13077\", \"Coweta County\", \r\na == \"13079\", \"Crawford County\", \r\na == \"13081\", \"Crisp County\", \r\na == \"13083\", \"Dade County\", \r\na == \"13085\", \"Dawson County\", \r\na == \"13087\", \"Decatur County\", \r\na == \"13089\", \"DeKalb County\", \r\na == \"13091\", \"Dodge County\", \r\na == \"13093\", \"Dooly County\", \r\na == \"13095\", \"Dougherty County\", \r\na == \"13097\", \"Douglas County\", \r\na == \"13099\", \"Early County\", \r\na == \"13101\", \"Echols County\", \r\na == \"13103\", \"Effingham County\", \r\na == \"13105\", \"Elbert County\", \r\na == \"13107\", \"Emanuel County\", \r\na == \"13109\", \"Evans County\", \r\na == \"13111\", \"Fannin County\", \r\na == \"13113\", \"Fayette County\", \r\na == \"13115\", \"Floyd County\", \r\na == \"13117\", \"Forsyth County\", \r\na == \"13119\", \"Franklin County\", \r\na == \"13121\", \"Fulton County\", \r\na == \"13123\", \"Gilmer County\", \r\na == \"13125\", \"Glascock County\", \r\na == \"13127\", \"Glynn County\", \r\na == \"13129\", \"Gordon County\", \r\na == \"13131\", \"Grady County\", \r\na == \"13133\", \"Greene County\", \r\na == \"13135\", \"Gwinnett County\", \r\na == \"13137\", \"Habersham County\", \r\na == \"13139\", \"Hall County\", \r\na == \"13141\", \"Hancock County\", \r\na == \"13143\", \"Haralson County\", \r\na == \"13145\", \"Harris County\", \r\na == \"13147\", \"Hart County\", \r\na == \"13149\", \"Heard County\", \r\na == \"13151\", \"Henry County\", \r\na == \"13153\", \"Houston County\", \r\na == \"13155\", \"Irwin County\", \r\na == \"13157\", \"Jackson County\", \r\na == \"13159\", \"Jasper County\", \r\na == \"13161\", \"Jeff Davis County\", \r\na == \"13163\", \"Jefferson County\", \r\na == \"13165\", \"Jenkins County\", \r\na == \"13167\", \"Johnson County\", \r\na == \"13169\", \"Jones County\", \r\na == \"13171\", \"Lamar County\", \r\na == \"13173\", \"Lanier County\", \r\na == \"13175\", \"Laurens County\", \r\na == \"13177\", \"Lee County\", \r\na == \"13179\", \"Liberty County\", \r\na == \"13181\", \"Lincoln County\", \r\na == \"13183\", \"Long County\", \r\na == \"13185\", \"Lowndes County\", \r\na == \"13187\", \"Lumpkin County\", \r\na == \"13189\", \"McDuffie County\", \r\na == \"13191\", \"McIntosh County\", \r\na == \"13193\", \"Macon County\", \r\na == \"13195\", \"Madison County\", \r\na == \"13197\", \"Marion County\", \r\na == \"13199\", \"Meriwether County\", \r\na == \"13201\", \"Miller County\", \r\na == \"13205\", \"Mitchell County\", \r\na == \"13207\", \"Monroe County\", \r\na == \"13209\", \"Montgomery County\", \r\na == \"13211\", \"Morgan County\", \r\na == \"13213\", \"Murray County\", \r\na == \"13215\", \"Muscogee County\", \r\na == \"13217\", \"Newton County\", \r\na == \"13219\", \"Oconee County\", \r\na == \"13221\", \"Oglethorpe County\", \r\na == \"13223\", \"Paulding County\", \r\na == \"13225\", \"Peach County\", \r\na == \"13227\", \"Pickens County\", \r\na == \"13229\", \"Pierce County\", \r\na == \"13231\", \"Pike County\", \r\na == \"13233\", \"Polk County\", \r\na == \"13235\", \"Pulaski County\", \r\na == \"13237\", \"Putnam County\", \r\na == \"13239\", \"Quitman County\", \r\na == \"13241\", \"Rabun County\", \r\na == \"13243\", \"Randolph County\", \r\na == \"13245\", \"Richmond County\", \r\na == \"13247\", \"Rockdale County\", \r\na == \"13249\", \"Schley County\", \r\na == \"13251\", \"Screven County\", \r\na == \"13253\", \"Seminole County\", \r\na == \"13255\", \"Spalding County\", \r\na == \"13257\", \"Stephens County\", \r\na == \"13259\", \"Stewart County\", \r\na == \"13261\", \"Sumter County\", \r\na == \"13263\", \"Talbot County\", \r\na == \"13265\", \"Taliaferro County\", \r\na == \"13267\", \"Tattnall County\", \r\na == \"13269\", \"Taylor County\", \r\na == \"13271\", \"Telfair County\", \r\na == \"13273\", \"Terrell County\", \r\na == \"13275\", \"Thomas County\", \r\na == \"13277\", \"Tift County\", \r\na == \"13279\", \"Toombs County\", \r\na == \"13281\", \"Towns County\", \r\na == \"13283\", \"Treutlen County\", \r\na == \"13285\", \"Troup County\", \r\na == \"13287\", \"Turner County\", \r\na == \"13289\", \"Twiggs County\", \r\na == \"13291\", \"Union County\", \r\na == \"13293\", \"Upson County\", \r\na == \"13295\", \"Walker County\", \r\na == \"13297\", \"Walton County\", \r\na == \"13299\", \"Ware County\", \r\na == \"13301\", \"Warren County\", \r\na == \"13303\", \"Washington County\", \r\na == \"13305\", \"Wayne County\", \r\na == \"13307\", \"Webster County\", \r\na == \"13309\", \"Wheeler County\", \r\na == \"13311\", \"White County\", \r\na == \"13313\", \"Whitfield County\", \r\na == \"13315\", \"Wilcox County\", \r\na == \"13317\", \"Wilkes County\", \r\na == \"13319\", \"Wilkinson County\", \r\na == \"13321\", \"Worth County\", \r\na == \"15001\", \"Hawaii County\", \r\na == \"15003\", \"Honolulu County\", \r\na == \"15005\", \"Kalawao County\", \r\na == \"15007\", \"Kauai County\", \r\na == \"15009\", \"Maui County\", \r\na == \"16001\", \"Ada County\", \r\na == \"16003\", \"Adams County\", \r\na == \"16005\", \"Bannock County\", \r\na == \"16007\", \"Bear Lake County\", \r\na == \"16009\", \"Benewah County\", \r\na == \"16011\", \"Bingham County\", \r\na == \"16013\", \"Blaine County\", \r\na == \"16015\", \"Boise County\", \r\na == \"16017\", \"Bonner County\", \r\na == \"16019\", \"Bonneville County\", \r\na == \"16021\", \"Boundary County\", \r\na == \"16023\", \"Butte County\", \r\na == \"16025\", \"Camas County\", \r\na == \"16027\", \"Canyon County\", \r\na == \"16029\", \"Caribou County\", \r\na == \"16031\", \"Cassia County\", \r\na == \"16033\", \"Clark County\", \r\na == \"16035\", \"Clearwater County\", \r\na == \"16037\", \"Custer County\", \r\na == \"16039\", \"Elmore County\", \r\na == \"16041\", \"Franklin County\", \r\na == \"16043\", \"Fremont County\", \r\na == \"16045\", \"Gem County\", \r\na == \"16047\", \"Gooding County\", \r\na == \"16049\", \"Idaho County\", \r\na == \"16051\", \"Jefferson County\", \r\na == \"16053\", \"Jerome County\", \r\na == \"16055\", \"Kootenai County\", \r\na == \"16057\", \"Latah County\", \r\na == \"16059\", \"Lemhi County\", \r\na == \"16061\", \"Lewis County\", \r\na == \"16063\", \"Lincoln County\", \r\na == \"16065\", \"Madison County\", \r\na == \"16067\", \"Minidoka County\", \r\na == \"16069\", \"Nez Perce County\", \r\na == \"16071\", \"Oneida County\", \r\na == \"16073\", \"Owyhee County\", \r\na == \"16075\", \"Payette County\", \r\na == \"16077\", \"Power County\", \r\na == \"16079\", \"Shoshone County\", \r\na == \"16081\", \"Teton County\", \r\na == \"16083\", \"Twin Falls County\", \r\na == \"16085\", \"Valley County\", \r\na == \"16087\", \"Washington County\", \r\na == \"17001\", \"Adams County\", \r\na == \"17003\", \"Alexander County\", \r\na == \"17005\", \"Bond County\", \r\na == \"17007\", \"Boone County\", \r\na == \"17009\", \"Brown County\", \r\na == \"17011\", \"Bureau County\", \r\na == \"17013\", \"Calhoun County\", \r\na == \"17015\", \"Carroll County\", \r\na == \"17017\", \"Cass County\", \r\na == \"17019\", \"Champaign County\", \r\na == \"17021\", \"Christian County\", \r\na == \"17023\", \"Clark County\", \r\na == \"17025\", \"Clay County\", \r\na == \"17027\", \"Clinton County\", \r\na == \"17029\", \"Coles County\", \r\na == \"17031\", \"Cook County\", \r\na == \"17033\", \"Crawford County\", \r\na == \"17035\", \"Cumberland County\", \r\na == \"17037\", \"DeKalb County\", \r\na == \"17039\", \"De Witt County\", \r\na == \"17041\", \"Douglas County\", \r\na == \"17043\", \"DuPage County\", \r\na == \"17045\", \"Edgar County\", \r\na == \"17047\", \"Edwards County\", \r\na == \"17049\", \"Effingham County\", \r\na == \"17051\", \"Fayette County\", \r\na == \"17053\", \"Ford County\", \r\na == \"17055\", \"Franklin County\", \r\na == \"17057\", \"Fulton County\", \r\na == \"17059\", \"Gallatin County\", \r\na == \"17061\", \"Greene County\", \r\na == \"17063\", \"Grundy County\", \r\na == \"17065\", \"Hamilton County\", \r\na == \"17067\", \"Hancock County\", \r\na == \"17069\", \"Hardin County\", \r\na == \"17071\", \"Henderson County\", \r\na == \"17073\", \"Henry County\", \r\na == \"17075\", \"Iroquois County\", \r\na == \"17077\", \"Jackson County\", \r\na == \"17079\", \"Jasper County\", \r\na == \"17081\", \"Jefferson County\", \r\na == \"17083\", \"Jersey County\", \r\na == \"17085\", \"Jo Daviess County\", \r\na == \"17087\", \"Johnson County\", \r\na == \"17089\", \"Kane County\", \r\na == \"17091\", \"Kankakee County\", \r\na == \"17093\", \"Kendall County\", \r\na == \"17095\", \"Knox County\", \r\na == \"17097\", \"Lake County\", \r\na == \"17099\", \"LaSalle County\", \r\na == \"17101\", \"Lawrence County\", \r\na == \"17103\", \"Lee County\", \r\na == \"17105\", \"Livingston County\", \r\na == \"17107\", \"Logan County\", \r\na == \"17109\", \"McDonough County\", \r\na == \"17111\", \"McHenry County\", \r\na == \"17113\", \"McLean County\", \r\na == \"17115\", \"Macon County\", \r\na == \"17117\", \"Macoupin County\", \r\na == \"17119\", \"Madison County\", \r\na == \"17121\", \"Marion County\", \r\na == \"17123\", \"Marshall County\", \r\na == \"17125\", \"Mason County\", \r\na == \"17127\", \"Massac County\", \r\na == \"17129\", \"Menard County\", \r\na == \"17131\", \"Mercer County\", \r\na == \"17133\", \"Monroe County\", \r\na == \"17135\", \"Montgomery County\", \r\na == \"17137\", \"Morgan County\", \r\na == \"17139\", \"Moultrie County\", \r\na == \"17141\", \"Ogle County\", \r\na == \"17143\", \"Peoria County\", \r\na == \"17145\", \"Perry County\", \r\na == \"17147\", \"Piatt County\", \r\na == \"17149\", \"Pike County\", \r\na == \"17151\", \"Pope County\", \r\na == \"17153\", \"Pulaski County\", \r\na == \"17155\", \"Putnam County\", \r\na == \"17157\", \"Randolph County\", \r\na == \"17159\", \"Richland County\", \r\na == \"17161\", \"Rock Island County\", \r\na == \"17163\", \"St. Clair County\", \r\na == \"17165\", \"Saline County\", \r\na == \"17167\", \"Sangamon County\", \r\na == \"17169\", \"Schuyler County\", \r\na == \"17171\", \"Scott County\", \r\na == \"17173\", \"Shelby County\", \r\na == \"17175\", \"Stark County\", \r\na == \"17177\", \"Stephenson County\", \r\na == \"17179\", \"Tazewell County\", \r\na == \"17181\", \"Union County\", \r\na == \"17183\", \"Vermilion County\", \r\na == \"17185\", \"Wabash County\", \r\na == \"17187\", \"Warren County\", \r\na == \"17189\", \"Washington County\", \r\na == \"17191\", \"Wayne County\", \r\na == \"17193\", \"White County\", \r\na == \"17195\", \"Whiteside County\", \r\na == \"17197\", \"Will County\", \r\na == \"17199\", \"Williamson County\", \r\na == \"17201\", \"Winnebago County\", \r\na == \"17203\", \"Woodford County\", \r\na == \"18001\", \"Adams County\", \r\na == \"18003\", \"Allen County\", \r\na == \"18005\", \"Bartholomew County\", \r\na == \"18007\", \"Benton County\", \r\na == \"18009\", \"Blackford County\", \r\na == \"18011\", \"Boone County\", \r\na == \"18013\", \"Brown County\", \r\na == \"18015\", \"Carroll County\", \r\na == \"18017\", \"Cass County\", \r\na == \"18019\", \"Clark County\", \r\na == \"18021\", \"Clay County\", \r\na == \"18023\", \"Clinton County\", \r\na == \"18025\", \"Crawford County\", \r\na == \"18027\", \"Daviess County\", \r\na == \"18029\", \"Dearborn County\", \r\na == \"18031\", \"Decatur County\", \r\na == \"18033\", \"DeKalb County\", \r\na == \"18035\", \"Delaware County\", \r\na == \"18037\", \"Dubois County\", \r\na == \"18039\", \"Elkhart County\", \r\na == \"18041\", \"Fayette County\", \r\na == \"18043\", \"Floyd County\", \r\na == \"18045\", \"Fountain County\", \r\na == \"18047\", \"Franklin County\", \r\na == \"18049\", \"Fulton County\", \r\na == \"18051\", \"Gibson County\", \r\na == \"18053\", \"Grant County\", \r\na == \"18055\", \"Greene County\", \r\na == \"18057\", \"Hamilton County\", \r\na == \"18059\", \"Hancock County\", \r\na == \"18061\", \"Harrison County\", \r\na == \"18063\", \"Hendricks County\", \r\na == \"18065\", \"Henry County\", \r\na == \"18067\", \"Howard County\", \r\na == \"18069\", \"Huntington County\", \r\na == \"18071\", \"Jackson County\", \r\na == \"18073\", \"Jasper County\", \r\na == \"18075\", \"Jay County\", \r\na == \"18077\", \"Jefferson County\", \r\na == \"18079\", \"Jennings County\", \r\na == \"18081\", \"Johnson County\", \r\na == \"18083\", \"Knox County\", \r\na == \"18085\", \"Kosciusko County\", \r\na == \"18087\", \"LaGrange County\", \r\na == \"18089\", \"Lake County\", \r\na == \"18091\", \"LaPorte County\", \r\na == \"18093\", \"Lawrence County\", \r\na == \"18095\", \"Madison County\", \r\na == \"18097\", \"Marion County\", \r\na == \"18099\", \"Marshall County\", \r\na == \"18101\", \"Martin County\", \r\na == \"18103\", \"Miami County\", \r\na == \"18105\", \"Monroe County\", \r\na == \"18107\", \"Montgomery County\", \r\na == \"18109\", \"Morgan County\", \r\na == \"18111\", \"Newton County\", \r\na == \"18113\", \"Noble County\", \r\na == \"18115\", \"Ohio County\", \r\na == \"18117\", \"Orange County\", \r\na == \"18119\", \"Owen County\", \r\na == \"18121\", \"Parke County\", \r\na == \"18123\", \"Perry County\", \r\na == \"18125\", \"Pike County\", \r\na == \"18127\", \"Porter County\", \r\na == \"18129\", \"Posey County\", \r\na == \"18131\", \"Pulaski County\", \r\na == \"18133\", \"Putnam County\", \r\na == \"18135\", \"Randolph County\", \r\na == \"18137\", \"Ripley County\", \r\na == \"18139\", \"Rush County\", \r\na == \"18141\", \"St. Joseph County\", \r\na == \"18143\", \"Scott County\", \r\na == \"18145\", \"Shelby County\", \r\na == \"18147\", \"Spencer County\", \r\na == \"18149\", \"Starke County\", \r\na == \"18151\", \"Steuben County\", \r\na == \"18153\", \"Sullivan County\", \r\na == \"18155\", \"Switzerland County\", \r\na == \"18157\", \"Tippecanoe County\", \r\na == \"18159\", \"Tipton County\", \r\na == \"18161\", \"Union County\", \r\na == \"18163\", \"Vanderburgh County\", \r\na == \"18165\", \"Vermillion County\", \r\na == \"18167\", \"Vigo County\", \r\na == \"18169\", \"Wabash County\", \r\na == \"18171\", \"Warren County\", \r\na == \"18173\", \"Warrick County\", \r\na == \"18175\", \"Washington County\", \r\na == \"18177\", \"Wayne County\", \r\na == \"18179\", \"Wells County\", \r\na == \"18181\", \"White County\", \r\na == \"18183\", \"Whitley County\", \r\na == \"19001\", \"Adair County\", \r\na == \"19003\", \"Adams County\", \r\na == \"19005\", \"Allamakee County\", \r\na == \"19007\", \"Appanoose County\", \r\na == \"19009\", \"Audubon County\", \r\na == \"19011\", \"Benton County\", \r\na == \"19013\", \"Black Hawk County\", \r\na == \"19015\", \"Boone County\", \r\na == \"19017\", \"Bremer County\", \r\na == \"19019\", \"Buchanan County\", \r\na == \"19021\", \"Buena Vista County\", \r\na == \"19023\", \"Butler County\", \r\na == \"19025\", \"Calhoun County\", \r\na == \"19027\", \"Carroll County\", \r\na == \"19029\", \"Cass County\", \r\na == \"19031\", \"Cedar County\", \r\na == \"19033\", \"Cerro Gordo County\", \r\na == \"19035\", \"Cherokee County\", \r\na == \"19037\", \"Chickasaw County\", \r\na == \"19039\", \"Clarke County\", \r\na == \"19041\", \"Clay County\", \r\na == \"19043\", \"Clayton County\", \r\na == \"19045\", \"Clinton County\", \r\na == \"19047\", \"Crawford County\", \r\na == \"19049\", \"Dallas County\", \r\na == \"19051\", \"Davis County\", \r\na == \"19053\", \"Decatur County\", \r\na == \"19055\", \"Delaware County\", \r\na == \"19057\", \"Des Moines County\", \r\na == \"19059\", \"Dickinson County\", \r\na == \"19061\", \"Dubuque County\", \r\na == \"19063\", \"Emmet County\", \r\na == \"19065\", \"Fayette County\", \r\na == \"19067\", \"Floyd County\", \r\na == \"19069\", \"Franklin County\", \r\na == \"19071\", \"Fremont County\", \r\na == \"19073\", \"Greene County\", \r\na == \"19075\", \"Grundy County\", \r\na == \"19077\", \"Guthrie County\", \r\na == \"19079\", \"Hamilton County\", \r\na == \"19081\", \"Hancock County\", \r\na == \"19083\", \"Hardin County\", \r\na == \"19085\", \"Harrison County\", \r\na == \"19087\", \"Henry County\", \r\na == \"19089\", \"Howard County\", \r\na == \"19091\", \"Humboldt County\", \r\na == \"19093\", \"Ida County\", \r\na == \"19095\", \"Iowa County\", \r\na == \"19097\", \"Jackson County\", \r\na == \"19099\", \"Jasper County\", \r\na == \"19101\", \"Jefferson County\", \r\na == \"19103\", \"Johnson County\", \r\na == \"19105\", \"Jones County\", \r\na == \"19107\", \"Keokuk County\", \r\na == \"19109\", \"Kossuth County\", \r\na == \"19111\", \"Lee County\", \r\na == \"19113\", \"Linn County\", \r\na == \"19115\", \"Louisa County\", \r\na == \"19117\", \"Lucas County\", \r\na == \"19119\", \"Lyon County\", \r\na == \"19121\", \"Madison County\", \r\na == \"19123\", \"Mahaska County\", \r\na == \"19125\", \"Marion County\", \r\na == \"19127\", \"Marshall County\", \r\na == \"19129\", \"Mills County\", \r\na == \"19131\", \"Mitchell County\", \r\na == \"19133\", \"Monona County\", \r\na == \"19135\", \"Monroe County\", \r\na == \"19137\", \"Montgomery County\", \r\na == \"19139\", \"Muscatine County\", \r\na == \"19141\", \"O'Brien County\", \r\na == \"19143\", \"Osceola County\", \r\na == \"19145\", \"Page County\", \r\na == \"19147\", \"Palo Alto County\", \r\na == \"19149\", \"Plymouth County\", \r\na == \"19151\", \"Pocahontas County\", \r\na == \"19153\", \"Polk County\", \r\na == \"19155\", \"Pottawattamie County\", \r\na == \"19157\", \"Poweshiek County\", \r\na == \"19159\", \"Ringgold County\", \r\na == \"19161\", \"Sac County\", \r\na == \"19163\", \"Scott County\", \r\na == \"19165\", \"Shelby County\", \r\na == \"19167\", \"Sioux County\", \r\na == \"19169\", \"Story County\", \r\na == \"19171\", \"Tama County\", \r\na == \"19173\", \"Taylor County\", \r\na == \"19175\", \"Union County\", \r\na == \"19177\", \"Van Buren County\", \r\na == \"19179\", \"Wapello County\", \r\na == \"19181\", \"Warren County\", \r\na == \"19183\", \"Washington County\", \r\na == \"19185\", \"Wayne County\", \r\na == \"19187\", \"Webster County\", \r\na == \"19189\", \"Winnebago County\", \r\na == \"19191\", \"Winneshiek County\", \r\na == \"19193\", \"Woodbury County\", \r\na == \"19195\", \"Worth County\", \r\na == \"19197\", \"Wright County\", \r\na == \"20001\", \"Allen County\", \r\na == \"20003\", \"Anderson County\", \r\na == \"20005\", \"Atchison County\", \r\na == \"20007\", \"Barber County\", \r\na == \"20009\", \"Barton County\", \r\na == \"20011\", \"Bourbon County\", \r\na == \"20013\", \"Brown County\", \r\na == \"20015\", \"Butler County\", \r\na == \"20017\", \"Chase County\", \r\na == \"20019\", \"Chautauqua County\", \r\na == \"20021\", \"Cherokee County\", \r\na == \"20023\", \"Cheyenne County\", \r\na == \"20025\", \"Clark County\", \r\na == \"20027\", \"Clay County\", \r\na == \"20029\", \"Cloud County\", \r\na == \"20031\", \"Coffey County\", \r\na == \"20033\", \"Comanche County\", \r\na == \"20035\", \"Cowley County\", \r\na == \"20037\", \"Crawford County\", \r\na == \"20039\", \"Decatur County\", \r\na == \"20041\", \"Dickinson County\", \r\na == \"20043\", \"Doniphan County\", \r\na == \"20045\", \"Douglas County\", \r\na == \"20047\", \"Edwards County\", \r\na == \"20049\", \"Elk County\", \r\na == \"20051\", \"Ellis County\", \r\na == \"20053\", \"Ellsworth County\", \r\na == \"20055\", \"Finney County\", \r\na == \"20057\", \"Ford County\", \r\na == \"20059\", \"Franklin County\", \r\na == \"20061\", \"Geary County\", \r\na == \"20063\", \"Gove County\", \r\na == \"20065\", \"Graham County\", \r\na == \"20067\", \"Grant County\", \r\na == \"20069\", \"Gray County\", \r\na == \"20071\", \"Greeley County\", \r\na == \"20073\", \"Greenwood County\", \r\na == \"20075\", \"Hamilton County\", \r\na == \"20077\", \"Harper County\", \r\na == \"20079\", \"Harvey County\", \r\na == \"20081\", \"Haskell County\", \r\na == \"20083\", \"Hodgeman County\", \r\na == \"20085\", \"Jackson County\", \r\na == \"20087\", \"Jefferson County\", \r\na == \"20089\", \"Jewell County\", \r\na == \"20091\", \"Johnson County\", \r\na == \"20093\", \"Kearny County\", \r\na == \"20095\", \"Kingman County\", \r\na == \"20097\", \"Kiowa County\", \r\na == \"20099\", \"Labette County\", \r\na == \"20101\", \"Lane County\", \r\na == \"20103\", \"Leavenworth County\", \r\na == \"20105\", \"Lincoln County\", \r\na == \"20107\", \"Linn County\", \r\na == \"20109\", \"Logan County\", \r\na == \"20111\", \"Lyon County\", \r\na == \"20113\", \"McPherson County\", \r\na == \"20115\", \"Marion County\", \r\na == \"20117\", \"Marshall County\", \r\na == \"20119\", \"Meade County\", \r\na == \"20121\", \"Miami County\", \r\na == \"20123\", \"Mitchell County\", \r\na == \"20125\", \"Montgomery County\", \r\na == \"20127\", \"Morris County\", \r\na == \"20129\", \"Morton County\", \r\na == \"20131\", \"Nemaha County\", \r\na == \"20133\", \"Neosho County\", \r\na == \"20135\", \"Ness County\", \r\na == \"20137\", \"Norton County\", \r\na == \"20139\", \"Osage County\", \r\na == \"20141\", \"Osborne County\", \r\na == \"20143\", \"Ottawa County\", \r\na == \"20145\", \"Pawnee County\", \r\na == \"20147\", \"Phillips County\", \r\na == \"20149\", \"Pottawatomie County\", \r\na == \"20151\", \"Pratt County\", \r\na == \"20153\", \"Rawlins County\", \r\na == \"20155\", \"Reno County\", \r\na == \"20157\", \"Republic County\", \r\na == \"20159\", \"Rice County\", \r\na == \"20161\", \"Riley County\", \r\na == \"20163\", \"Rooks County\", \r\na == \"20165\", \"Rush County\", \r\na == \"20167\", \"Russell County\", \r\na == \"20169\", \"Saline County\", \r\na == \"20171\", \"Scott County\", \r\na == \"20173\", \"Sedgwick County\", \r\na == \"20175\", \"Seward County\", \r\na == \"20177\", \"Shawnee County\", \r\na == \"20179\", \"Sheridan County\", \r\na == \"20181\", \"Sherman County\", \r\na == \"20183\", \"Smith County\", \r\na == \"20185\", \"Stafford County\", \r\na == \"20187\", \"Stanton County\", \r\na == \"20189\", \"Stevens County\", \r\na == \"20191\", \"Sumner County\", \r\na == \"20193\", \"Thomas County\", \r\na == \"20195\", \"Trego County\", \r\na == \"20197\", \"Wabaunsee County\", \r\na == \"20199\", \"Wallace County\", \r\na == \"20201\", \"Washington County\", \r\na == \"20203\", \"Wichita County\", \r\na == \"20205\", \"Wilson County\", \r\na == \"20207\", \"Woodson County\", \r\na == \"20209\", \"Wyandotte County\", \r\na == \"21001\", \"Adair County\", \r\na == \"21003\", \"Allen County\", \r\na == \"21005\", \"Anderson County\", \r\na == \"21007\", \"Ballard County\", \r\na == \"21009\", \"Barren County\", \r\na == \"21011\", \"Bath County\", \r\na == \"21013\", \"Bell County\", \r\na == \"21015\", \"Boone County\", \r\na == \"21017\", \"Bourbon County\", \r\na == \"21019\", \"Boyd County\", \r\na == \"21021\", \"Boyle County\", \r\na == \"21023\", \"Bracken County\", \r\na == \"21025\", \"Breathitt County\", \r\na == \"21027\", \"Breckinridge County\", \r\na == \"21029\", \"Bullitt County\", \r\na == \"21031\", \"Butler County\", \r\na == \"21033\", \"Caldwell County\", \r\na == \"21035\", \"Calloway County\", \r\na == \"21037\", \"Campbell County\", \r\na == \"21039\", \"Carlisle County\", \r\na == \"21041\", \"Carroll County\", \r\na == \"21043\", \"Carter County\", \r\na == \"21045\", \"Casey County\", \r\na == \"21047\", \"Christian County\", \r\na == \"21049\", \"Clark County\", \r\na == \"21051\", \"Clay County\", \r\na == \"21053\", \"Clinton County\", \r\na == \"21055\", \"Crittenden County\", \r\na == \"21057\", \"Cumberland County\", \r\na == \"21059\", \"Daviess County\", \r\na == \"21061\", \"Edmonson County\", \r\na == \"21063\", \"Elliott County\", \r\na == \"21065\", \"Estill County\", \r\na == \"21067\", \"Fayette County\", \r\na == \"21069\", \"Fleming County\", \r\na == \"21071\", \"Floyd County\", \r\na == \"21073\", \"Franklin County\", \r\na == \"21075\", \"Fulton County\", \r\na == \"21077\", \"Gallatin County\", \r\na == \"21079\", \"Garrard County\", \r\na == \"21081\", \"Grant County\", \r\na == \"21083\", \"Graves County\", \r\na == \"21085\", \"Grayson County\", \r\na == \"21087\", \"Green County\", \r\na == \"21089\", \"Greenup County\", \r\na == \"21091\", \"Hancock County\", \r\na == \"21093\", \"Hardin County\", \r\na == \"21095\", \"Harlan County\", \r\na == \"21097\", \"Harrison County\", \r\na == \"21099\", \"Hart County\", \r\na == \"21101\", \"Henderson County\", \r\na == \"21103\", \"Henry County\", \r\na == \"21105\", \"Hickman County\", \r\na == \"21107\", \"Hopkins County\", \r\na == \"21109\", \"Jackson County\", \r\na == \"21111\", \"Jefferson County\", \r\na == \"21113\", \"Jessamine County\", \r\na == \"21115\", \"Johnson County\", \r\na == \"21117\", \"Kenton County\", \r\na == \"21119\", \"Knott County\", \r\na == \"21121\", \"Knox County\", \r\na == \"21123\", \"Larue County\", \r\na == \"21125\", \"Laurel County\", \r\na == \"21127\", \"Lawrence County\", \r\na == \"21129\", \"Lee County\", \r\na == \"21131\", \"Leslie County\", \r\na == \"21133\", \"Letcher County\", \r\na == \"21135\", \"Lewis County\", \r\na == \"21137\", \"Lincoln County\", \r\na == \"21139\", \"Livingston County\", \r\na == \"21141\", \"Logan County\", \r\na == \"21143\", \"Lyon County\", \r\na == \"21145\", \"McCracken County\", \r\na == \"21147\", \"McCreary County\", \r\na == \"21149\", \"McLean County\", \r\na == \"21151\", \"Madison County\", \r\na == \"21153\", \"Magoffin County\", \r\na == \"21155\", \"Marion County\", \r\na == \"21157\", \"Marshall County\", \r\na == \"21159\", \"Martin County\", \r\na == \"21161\", \"Mason County\", \r\na == \"21163\", \"Meade County\", \r\na == \"21165\", \"Menifee County\", \r\na == \"21167\", \"Mercer County\", \r\na == \"21169\", \"Metcalfe County\", \r\na == \"21171\", \"Monroe County\", \r\na == \"21173\", \"Montgomery County\", \r\na == \"21175\", \"Morgan County\", \r\na == \"21177\", \"Muhlenberg County\", \r\na == \"21179\", \"Nelson County\", \r\na == \"21181\", \"Nicholas County\", \r\na == \"21183\", \"Ohio County\", \r\na == \"21185\", \"Oldham County\", \r\na == \"21187\", \"Owen County\", \r\na == \"21189\", \"Owsley County\", \r\na == \"21191\", \"Pendleton County\", \r\na == \"21193\", \"Perry County\", \r\na == \"21195\", \"Pike County\", \r\na == \"21197\", \"Powell County\", \r\na == \"21199\", \"Pulaski County\", \r\na == \"21201\", \"Robertson County\", \r\na == \"21203\", \"Rockcastle County\", \r\na == \"21205\", \"Rowan County\", \r\na == \"21207\", \"Russell County\", \r\na == \"21209\", \"Scott County\", \r\na == \"21211\", \"Shelby County\", \r\na == \"21213\", \"Simpson County\", \r\na == \"21215\", \"Spencer County\", \r\na == \"21217\", \"Taylor County\", \r\na == \"21219\", \"Todd County\", \r\na == \"21221\", \"Trigg County\", \r\na == \"21223\", \"Trimble County\", \r\na == \"21225\", \"Union County\", \r\na == \"21227\", \"Warren County\", \r\na == \"21229\", \"Washington County\", \r\na == \"21231\", \"Wayne County\", \r\na == \"21233\", \"Webster County\", \r\na == \"21235\", \"Whitley County\", \r\na == \"21237\", \"Wolfe County\", \r\na == \"21239\", \"Woodford County\", \r\na == \"22001\", \"Acadia Parish\", \r\na == \"22003\", \"Allen Parish\", \r\na == \"22005\", \"Ascension Parish\", \r\na == \"22007\", \"Assumption Parish\", \r\na == \"22009\", \"Avoyelles Parish\", \r\na == \"22011\", \"Beauregard Parish\", \r\na == \"22013\", \"Bienville Parish\", \r\na == \"22015\", \"Bossier Parish\", \r\na == \"22017\", \"Caddo Parish\", \r\na == \"22019\", \"Calcasieu Parish\", \r\na == \"22021\", \"Caldwell Parish\", \r\na == \"22023\", \"Cameron Parish\", \r\na == \"22025\", \"Catahoula Parish\", \r\na == \"22027\", \"Claiborne Parish\", \r\na == \"22029\", \"Concordia Parish\", \r\na == \"22031\", \"De Soto Parish\", \r\na == \"22033\", \"East Baton Rouge Parish\", \r\na == \"22035\", \"East Carroll Parish\", \r\na == \"22037\", \"East Feliciana Parish\", \r\na == \"22039\", \"Evangeline Parish\", \r\na == \"22041\", \"Franklin Parish\", \r\na == \"22043\", \"Grant Parish\", \r\na == \"22045\", \"Iberia Parish\", \r\na == \"22047\", \"Iberville Parish\", \r\na == \"22049\", \"Jackson Parish\", \r\na == \"22051\", \"Jefferson Parish\", \r\na == \"22053\", \"Jefferson Davis Parish\", \r\na == \"22055\", \"Lafayette Parish\", \r\na == \"22057\", \"Lafourche Parish\", \r\na == \"22059\", \"LaSalle Parish\", \r\na == \"22061\", \"Lincoln Parish\", \r\na == \"22063\", \"Livingston Parish\", \r\na == \"22065\", \"Madison Parish\", \r\na == \"22067\", \"Morehouse Parish\", \r\na == \"22069\", \"Natchitoches Parish\", \r\na == \"22071\", \"Orleans Parish\", \r\na == \"22073\", \"Ouachita Parish\", \r\na == \"22075\", \"Plaquemines Parish\", \r\na == \"22077\", \"Pointe Coupee Parish\", \r\na == \"22079\", \"Rapides Parish\", \r\na == \"22081\", \"Red River Parish\", \r\na == \"22083\", \"Richland Parish\", \r\na == \"22085\", \"Sabine Parish\", \r\na == \"22087\", \"St. Bernard Parish\", \r\na == \"22089\", \"St. Charles Parish\", \r\na == \"22091\", \"St. Helena Parish\", \r\na == \"22093\", \"St. James Parish\", \r\na == \"22095\", \"St. John the Baptist Parish\", \r\na == \"22097\", \"St. Landry Parish\", \r\na == \"22099\", \"St. Martin Parish\", \r\na == \"22101\", \"St. Mary Parish\", \r\na == \"22103\", \"St. Tammany Parish\", \r\na == \"22105\", \"Tangipahoa Parish\", \r\na == \"22107\", \"Tensas Parish\", \r\na == \"22109\", \"Terrebonne Parish\", \r\na == \"22111\", \"Union Parish\", \r\na == \"22113\", \"Vermilion Parish\", \r\na == \"22115\", \"Vernon Parish\", \r\na == \"22117\", \"Washington Parish\", \r\na == \"22119\", \"Webster Parish\", \r\na == \"22121\", \"West Baton Rouge Parish\", \r\na == \"22123\", \"West Carroll Parish\", \r\na == \"22125\", \"West Feliciana Parish\", \r\na == \"22127\", \"Winn Parish\", \r\na == \"23001\", \"Androscoggin County\", \r\na == \"23003\", \"Aroostook County\", \r\na == \"23005\", \"Cumberland County\", \r\na == \"23007\", \"Franklin County\", \r\na == \"23009\", \"Hancock County\", \r\na == \"23011\", \"Kennebec County\", \r\na == \"23013\", \"Knox County\", \r\na == \"23015\", \"Lincoln County\", \r\na == \"23017\", \"Oxford County\", \r\na == \"23019\", \"Penobscot County\", \r\na == \"23021\", \"Piscataquis County\", \r\na == \"23023\", \"Sagadahoc County\", \r\na == \"23025\", \"Somerset County\", \r\na == \"23027\", \"Waldo County\", \r\na == \"23029\", \"Washington County\", \r\na == \"23031\", \"York County\", \r\na == \"24001\", \"Allegany County\", \r\na == \"24003\", \"Anne Arundel County\", \r\na == \"24005\", \"Baltimore County\", \r\na == \"24009\", \"Calvert County\", \r\na == \"24011\", \"Caroline County\", \r\na == \"24013\", \"Carroll County\", \r\na == \"24015\", \"Cecil County\", \r\na == \"24017\", \"Charles County\", \r\na == \"24019\", \"Dorchester County\", \r\na == \"24021\", \"Frederick County\", \r\na == \"24023\", \"Garrett County\", \r\na == \"24025\", \"Harford County\", \r\na == \"24027\", \"Howard County\", \r\na == \"24029\", \"Kent County\", \r\na == \"24031\", \"Montgomery County\", \r\na == \"24033\", \"Prince George's County\", \r\na == \"24035\", \"Queen Anne's County\", \r\na == \"24037\", \"St. Mary's County\", \r\na == \"24039\", \"Somerset County\", \r\na == \"24041\", \"Talbot County\", \r\na == \"24043\", \"Washington County\", \r\na == \"24045\", \"Wicomico County\", \r\na == \"24047\", \"Worcester County\", \r\na == \"24510\", \"Baltimore city\", \r\na == \"25001\", \"Barnstable County\", \r\na == \"25003\", \"Berkshire County\", \r\na == \"25005\", \"Bristol County\", \r\na == \"25007\", \"Dukes County\", \r\na == \"25009\", \"Essex County\", \r\na == \"25011\", \"Franklin County\", \r\na == \"25013\", \"Hampden County\", \r\na == \"25015\", \"Hampshire County\", \r\na == \"25017\", \"Middlesex County\", \r\na == \"25019\", \"Nantucket County\", \r\na == \"25021\", \"Norfolk County\", \r\na == \"25023\", \"Plymouth County\", \r\na == \"25025\", \"Suffolk County\", \r\na == \"25027\", \"Worcester County\", \r\na == \"26001\", \"Alcona County\", \r\na == \"26003\", \"Alger County\", \r\na == \"26005\", \"Allegan County\", \r\na == \"26007\", \"Alpena County\", \r\na == \"26009\", \"Antrim County\", \r\na == \"26011\", \"Arenac County\", \r\na == \"26013\", \"Baraga County\", \r\na == \"26015\", \"Barry County\", \r\na == \"26017\", \"Bay County\", \r\na == \"26019\", \"Benzie County\", \r\na == \"26021\", \"Berrien County\", \r\na == \"26023\", \"Branch County\", \r\na == \"26025\", \"Calhoun County\", \r\na == \"26027\", \"Cass County\", \r\na == \"26029\", \"Charlevoix County\", \r\na == \"26031\", \"Cheboygan County\", \r\na == \"26033\", \"Chippewa County\", \r\na == \"26035\", \"Clare County\", \r\na == \"26037\", \"Clinton County\", \r\na == \"26039\", \"Crawford County\", \r\na == \"26041\", \"Delta County\", \r\na == \"26043\", \"Dickinson County\", \r\na == \"26045\", \"Eaton County\", \r\na == \"26047\", \"Emmet County\", \r\na == \"26049\", \"Genesee County\", \r\na == \"26051\", \"Gladwin County\", \r\na == \"26053\", \"Gogebic County\", \r\na == \"26055\", \"Grand Traverse County\", \r\na == \"26057\", \"Gratiot County\", \r\na == \"26059\", \"Hillsdale County\", \r\na == \"26061\", \"Houghton County\", \r\na == \"26063\", \"Huron County\", \r\na == \"26065\", \"Ingham County\", \r\na == \"26067\", \"Ionia County\", \r\na == \"26069\", \"Iosco County\", \r\na == \"26071\", \"Iron County\", \r\na == \"26073\", \"Isabella County\", \r\na == \"26075\", \"Jackson County\", \r\na == \"26077\", \"Kalamazoo County\", \r\na == \"26079\", \"Kalkaska County\", \r\na == \"26081\", \"Kent County\", \r\na == \"26083\", \"Keweenaw County\", \r\na == \"26085\", \"Lake County\", \r\na == \"26087\", \"Lapeer County\", \r\na == \"26089\", \"Leelanau County\", \r\na == \"26091\", \"Lenawee County\", \r\na == \"26093\", \"Livingston County\", \r\na == \"26095\", \"Luce County\", \r\na == \"26097\", \"Mackinac County\", \r\na == \"26099\", \"Macomb County\", \r\na == \"26101\", \"Manistee County\", \r\na == \"26103\", \"Marquette County\", \r\na == \"26105\", \"Mason County\", \r\na == \"26107\", \"Mecosta County\", \r\na == \"26109\", \"Menominee County\", \r\na == \"26111\", \"Midland County\", \r\na == \"26113\", \"Missaukee County\", \r\na == \"26115\", \"Monroe County\", \r\na == \"26117\", \"Montcalm County\", \r\na == \"26119\", \"Montmorency County\", \r\na == \"26121\", \"Muskegon County\", \r\na == \"26123\", \"Newaygo County\", \r\na == \"26125\", \"Oakland County\", \r\na == \"26127\", \"Oceana County\", \r\na == \"26129\", \"Ogemaw County\", \r\na == \"26131\", \"Ontonagon County\", \r\na == \"26133\", \"Osceola County\", \r\na == \"26135\", \"Oscoda County\", \r\na == \"26137\", \"Otsego County\", \r\na == \"26139\", \"Ottawa County\", \r\na == \"26141\", \"Presque Isle County\", \r\na == \"26143\", \"Roscommon County\", \r\na == \"26145\", \"Saginaw County\", \r\na == \"26147\", \"St. Clair County\", \r\na == \"26149\", \"St. Joseph County\", \r\na == \"26151\", \"Sanilac County\", \r\na == \"26153\", \"Schoolcraft County\", \r\na == \"26155\", \"Shiawassee County\", \r\na == \"26157\", \"Tuscola County\", \r\na == \"26159\", \"Van Buren County\", \r\na == \"26161\", \"Washtenaw County\", \r\na == \"26163\", \"Wayne County\", \r\na == \"26165\", \"Wexford County\", \r\na == \"27001\", \"Aitkin County\", \r\na == \"27003\", \"Anoka County\", \r\na == \"27005\", \"Becker County\", \r\na == \"27007\", \"Beltrami County\", \r\na == \"27009\", \"Benton County\", \r\na == \"27011\", \"Big Stone County\", \r\na == \"27013\", \"Blue Earth County\", \r\na == \"27015\", \"Brown County\", \r\na == \"27017\", \"Carlton County\", \r\na == \"27019\", \"Carver County\", \r\na == \"27021\", \"Cass County\", \r\na == \"27023\", \"Chippewa County\", \r\na == \"27025\", \"Chisago County\", \r\na == \"27027\", \"Clay County\", \r\na == \"27029\", \"Clearwater County\", \r\na == \"27031\", \"Cook County\", \r\na == \"27033\", \"Cottonwood County\", \r\na == \"27035\", \"Crow Wing County\", \r\na == \"27037\", \"Dakota County\", \r\na == \"27039\", \"Dodge County\", \r\na == \"27041\", \"Douglas County\", \r\na == \"27043\", \"Faribault County\", \r\na == \"27045\", \"Fillmore County\", \r\na == \"27047\", \"Freeborn County\", \r\na == \"27049\", \"Goodhue County\", \r\na == \"27051\", \"Grant County\", \r\na == \"27053\", \"Hennepin County\", \r\na == \"27055\", \"Houston County\", \r\na == \"27057\", \"Hubbard County\", \r\na == \"27059\", \"Isanti County\", \r\na == \"27061\", \"Itasca County\", \r\na == \"27063\", \"Jackson County\", \r\na == \"27065\", \"Kanabec County\", \r\na == \"27067\", \"Kandiyohi County\", \r\na == \"27069\", \"Kittson County\", \r\na == \"27071\", \"Koochiching County\", \r\na == \"27073\", \"Lac qui Parle County\", \r\na == \"27075\", \"Lake County\", \r\na == \"27077\", \"Lake of the Woods County\", \r\na == \"27079\", \"Le Sueur County\", \r\na == \"27081\", \"Lincoln County\", \r\na == \"27083\", \"Lyon County\", \r\na == \"27085\", \"McLeod County\", \r\na == \"27087\", \"Mahnomen County\", \r\na == \"27089\", \"Marshall County\", \r\na == \"27091\", \"Martin County\", \r\na == \"27093\", \"Meeker County\", \r\na == \"27095\", \"Mille Lacs County\", \r\na == \"27097\", \"Morrison County\", \r\na == \"27099\", \"Mower County\", \r\na == \"27101\", \"Murray County\", \r\na == \"27103\", \"Nicollet County\", \r\na == \"27105\", \"Nobles County\", \r\na == \"27107\", \"Norman County\", \r\na == \"27109\", \"Olmsted County\", \r\na == \"27111\", \"Otter Tail County\", \r\na == \"27113\", \"Pennington County\", \r\na == \"27115\", \"Pine County\", \r\na == \"27117\", \"Pipestone County\", \r\na == \"27119\", \"Polk County\", \r\na == \"27121\", \"Pope County\", \r\na == \"27123\", \"Ramsey County\", \r\na == \"27125\", \"Red Lake County\", \r\na == \"27127\", \"Redwood County\", \r\na == \"27129\", \"Renville County\", \r\na == \"27131\", \"Rice County\", \r\na == \"27133\", \"Rock County\", \r\na == \"27135\", \"Roseau County\", \r\na == \"27137\", \"St. Louis County\", \r\na == \"27139\", \"Scott County\", \r\na == \"27141\", \"Sherburne County\", \r\na == \"27143\", \"Sibley County\", \r\na == \"27145\", \"Stearns County\", \r\na == \"27147\", \"Steele County\", \r\na == \"27149\", \"Stevens County\", \r\na == \"27151\", \"Swift County\", \r\na == \"27153\", \"Todd County\", \r\na == \"27155\", \"Traverse County\", \r\na == \"27157\", \"Wabasha County\", \r\na == \"27159\", \"Wadena County\", \r\na == \"27161\", \"Waseca County\", \r\na == \"27163\", \"Washington County\", \r\na == \"27165\", \"Watonwan County\", \r\na == \"27167\", \"Wilkin County\", \r\na == \"27169\", \"Winona County\", \r\na == \"27171\", \"Wright County\", \r\na == \"27173\", \"Yellow Medicine County\", \r\na == \"28001\", \"Adams County\", \r\na == \"28003\", \"Alcorn County\", \r\na == \"28005\", \"Amite County\", \r\na == \"28007\", \"Attala County\", \r\na == \"28009\", \"Benton County\", \r\na == \"28011\", \"Bolivar County\", \r\na == \"28013\", \"Calhoun County\", \r\na == \"28015\", \"Carroll County\", \r\na == \"28017\", \"Chickasaw County\", \r\na == \"28019\", \"Choctaw County\", \r\na == \"28021\", \"Claiborne County\", \r\na == \"28023\", \"Clarke County\", \r\na == \"28025\", \"Clay County\", \r\na == \"28027\", \"Coahoma County\", \r\na == \"28029\", \"Copiah County\", \r\na == \"28031\", \"Covington County\", \r\na == \"28033\", \"DeSoto County\", \r\na == \"28035\", \"Forrest County\", \r\na == \"28037\", \"Franklin County\", \r\na == \"28039\", \"George County\", \r\na == \"28041\", \"Greene County\", \r\na == \"28043\", \"Grenada County\", \r\na == \"28045\", \"Hancock County\", \r\na == \"28047\", \"Harrison County\", \r\na == \"28049\", \"Hinds County\", \r\na == \"28051\", \"Holmes County\", \r\na == \"28053\", \"Humphreys County\", \r\na == \"28055\", \"Issaquena County\", \r\na == \"28057\", \"Itawamba County\", \r\na == \"28059\", \"Jackson County\", \r\na == \"28061\", \"Jasper County\", \r\na == \"28063\", \"Jefferson County\", \r\na == \"28065\", \"Jefferson Davis County\", \r\na == \"28067\", \"Jones County\", \r\na == \"28069\", \"Kemper County\", \r\na == \"28071\", \"Lafayette County\", \r\na == \"28073\", \"Lamar County\", \r\na == \"28075\", \"Lauderdale County\", \r\na == \"28077\", \"Lawrence County\", \r\na == \"28079\", \"Leake County\", \r\na == \"28081\", \"Lee County\", \r\na == \"28083\", \"Leflore County\", \r\na == \"28085\", \"Lincoln County\", \r\na == \"28087\", \"Lowndes County\", \r\na == \"28089\", \"Madison County\", \r\na == \"28091\", \"Marion County\", \r\na == \"28093\", \"Marshall County\", \r\na == \"28095\", \"Monroe County\", \r\na == \"28097\", \"Montgomery County\", \r\na == \"28099\", \"Neshoba County\", \r\na == \"28101\", \"Newton County\", \r\na == \"28103\", \"Noxubee County\", \r\na == \"28105\", \"Oktibbeha County\", \r\na == \"28107\", \"Panola County\", \r\na == \"28109\", \"Pearl River County\", \r\na == \"28111\", \"Perry County\", \r\na == \"28113\", \"Pike County\", \r\na == \"28115\", \"Pontotoc County\", \r\na == \"28117\", \"Prentiss County\", \r\na == \"28119\", \"Quitman County\", \r\na == \"28121\", \"Rankin County\", \r\na == \"28123\", \"Scott County\", \r\na == \"28125\", \"Sharkey County\", \r\na == \"28127\", \"Simpson County\", \r\na == \"28129\", \"Smith County\", \r\na == \"28131\", \"Stone County\", \r\na == \"28133\", \"Sunflower County\", \r\na == \"28135\", \"Tallahatchie County\", \r\na == \"28137\", \"Tate County\", \r\na == \"28139\", \"Tippah County\", \r\na == \"28141\", \"Tishomingo County\", \r\na == \"28143\", \"Tunica County\", \r\na == \"28145\", \"Union County\", \r\na == \"28147\", \"Walthall County\", \r\na == \"28149\", \"Warren County\", \r\na == \"28151\", \"Washington County\", \r\na == \"28153\", \"Wayne County\", \r\na == \"28155\", \"Webster County\", \r\na == \"28157\", \"Wilkinson County\", \r\na == \"28159\", \"Winston County\", \r\na == \"28161\", \"Yalobusha County\", \r\na == \"28163\", \"Yazoo County\", \r\na == \"29001\", \"Adair County\", \r\na == \"29003\", \"Andrew County\", \r\na == \"29005\", \"Atchison County\", \r\na == \"29007\", \"Audrain County\", \r\na == \"29009\", \"Barry County\", \r\na == \"29011\", \"Barton County\", \r\na == \"29013\", \"Bates County\", \r\na == \"29015\", \"Benton County\", \r\na == \"29017\", \"Bollinger County\", \r\na == \"29019\", \"Boone County\", \r\na == \"29021\", \"Buchanan County\", \r\na == \"29023\", \"Butler County\", \r\na == \"29025\", \"Caldwell County\", \r\na == \"29027\", \"Callaway County\", \r\na == \"29029\", \"Camden County\", \r\na == \"29031\", \"Cape Girardeau County\", \r\na == \"29033\", \"Carroll County\", \r\na == \"29035\", \"Carter County\", \r\na == \"29037\", \"Cass County\", \r\na == \"29039\", \"Cedar County\", \r\na == \"29041\", \"Chariton County\", \r\na == \"29043\", \"Christian County\", \r\na == \"29045\", \"Clark County\", \r\na == \"29047\", \"Clay County\", \r\na == \"29049\", \"Clinton County\", \r\na == \"29051\", \"Cole County\", \r\na == \"29053\", \"Cooper County\", \r\na == \"29055\", \"Crawford County\", \r\na == \"29057\", \"Dade County\", \r\na == \"29059\", \"Dallas County\", \r\na == \"29061\", \"Daviess County\", \r\na == \"29063\", \"DeKalb County\", \r\na == \"29065\", \"Dent County\", \r\na == \"29067\", \"Douglas County\", \r\na == \"29069\", \"Dunklin County\", \r\na == \"29071\", \"Franklin County\", \r\na == \"29073\", \"Gasconade County\", \r\na == \"29075\", \"Gentry County\", \r\na == \"29077\", \"Greene County\", \r\na == \"29079\", \"Grundy County\", \r\na == \"29081\", \"Harrison County\", \r\na == \"29083\", \"Henry County\", \r\na == \"29085\", \"Hickory County\", \r\na == \"29087\", \"Holt County\", \r\na == \"29089\", \"Howard County\", \r\na == \"29091\", \"Howell County\", \r\na == \"29093\", \"Iron County\", \r\na == \"29095\", \"Jackson County\", \r\na == \"29097\", \"Jasper County\", \r\na == \"29099\", \"Jefferson County\", \r\na == \"29101\", \"Johnson County\", \r\na == \"29103\", \"Knox County\", \r\na == \"29105\", \"Laclede County\", \r\na == \"29107\", \"Lafayette County\", \r\na == \"29109\", \"Lawrence County\", \r\na == \"29111\", \"Lewis County\", \r\na == \"29113\", \"Lincoln County\", \r\na == \"29115\", \"Linn County\", \r\na == \"29117\", \"Livingston County\", \r\na == \"29119\", \"McDonald County\", \r\na == \"29121\", \"Macon County\", \r\na == \"29123\", \"Madison County\", \r\na == \"29125\", \"Maries County\", \r\na == \"29127\", \"Marion County\", \r\na == \"29129\", \"Mercer County\", \r\na == \"29131\", \"Miller County\", \r\na == \"29133\", \"Mississippi County\", \r\na == \"29135\", \"Moniteau County\", \r\na == \"29137\", \"Monroe County\", \r\na == \"29139\", \"Montgomery County\", \r\na == \"29141\", \"Morgan County\", \r\na == \"29143\", \"New Madrid County\", \r\na == \"29145\", \"Newton County\", \r\na == \"29147\", \"Nodaway County\", \r\na == \"29149\", \"Oregon County\", \r\na == \"29151\", \"Osage County\", \r\na == \"29153\", \"Ozark County\", \r\na == \"29155\", \"Pemiscot County\", \r\na == \"29157\", \"Perry County\", \r\na == \"29159\", \"Pettis County\", \r\na == \"29161\", \"Phelps County\", \r\na == \"29163\", \"Pike County\", \r\na == \"29165\", \"Platte County\", \r\na == \"29167\", \"Polk County\", \r\na == \"29169\", \"Pulaski County\", \r\na == \"29171\", \"Putnam County\", \r\na == \"29173\", \"Ralls County\", \r\na == \"29175\", \"Randolph County\", \r\na == \"29177\", \"Ray County\", \r\na == \"29179\", \"Reynolds County\", \r\na == \"29181\", \"Ripley County\", \r\na == \"29183\", \"St. Charles County\", \r\na == \"29185\", \"St. Clair County\", \r\na == \"29186\", \"Ste. Genevieve County\", \r\na == \"29187\", \"St. Francois County\", \r\na == \"29189\", \"St. Louis County\", \r\na == \"29195\", \"Saline County\", \r\na == \"29197\", \"Schuyler County\", \r\na == \"29199\", \"Scotland County\", \r\na == \"29201\", \"Scott County\", \r\na == \"29203\", \"Shannon County\", \r\na == \"29205\", \"Shelby County\", \r\na == \"29207\", \"Stoddard County\", \r\na == \"29209\", \"Stone County\", \r\na == \"29211\", \"Sullivan County\", \r\na == \"29213\", \"Taney County\", \r\na == \"29215\", \"Texas County\", \r\na == \"29217\", \"Vernon County\", \r\na == \"29219\", \"Warren County\", \r\na == \"29221\", \"Washington County\", \r\na == \"29223\", \"Wayne County\", \r\na == \"29225\", \"Webster County\", \r\na == \"29227\", \"Worth County\", \r\na == \"29229\", \"Wright County\", \r\na == \"29510\", \"St. Louis city\", \r\na == \"30001\", \"Beaverhead County\", \r\na == \"30003\", \"Big Horn County\", \r\na == \"30005\", \"Blaine County\", \r\na == \"30007\", \"Broadwater County\", \r\na == \"30009\", \"Carbon County\", \r\na == \"30011\", \"Carter County\", \r\na == \"30013\", \"Cascade County\", \r\na == \"30015\", \"Chouteau County\", \r\na == \"30017\", \"Custer County\", \r\na == \"30019\", \"Daniels County\", \r\na == \"30021\", \"Dawson County\", \r\na == \"30023\", \"Deer Lodge County\", \r\na == \"30025\", \"Fallon County\", \r\na == \"30027\", \"Fergus County\", \r\na == \"30029\", \"Flathead County\", \r\na == \"30031\", \"Gallatin County\", \r\na == \"30033\", \"Garfield County\", \r\na == \"30035\", \"Glacier County\", \r\na == \"30037\", \"Golden Valley County\", \r\na == \"30039\", \"Granite County\", \r\na == \"30041\", \"Hill County\", \r\na == \"30043\", \"Jefferson County\", \r\na == \"30045\", \"Judith Basin County\", \r\na == \"30047\", \"Lake County\", \r\na == \"30049\", \"Lewis and Clark County\", \r\na == \"30051\", \"Liberty County\", \r\na == \"30053\", \"Lincoln County\", \r\na == \"30055\", \"McCone County\", \r\na == \"30057\", \"Madison County\", \r\na == \"30059\", \"Meagher County\", \r\na == \"30061\", \"Mineral County\", \r\na == \"30063\", \"Missoula County\", \r\na == \"30065\", \"Musselshell County\", \r\na == \"30067\", \"Park County\", \r\na == \"30069\", \"Petroleum County\", \r\na == \"30071\", \"Phillips County\", \r\na == \"30073\", \"Pondera County\", \r\na == \"30075\", \"Powder River County\", \r\na == \"30077\", \"Powell County\", \r\na == \"30079\", \"Prairie County\", \r\na == \"30081\", \"Ravalli County\", \r\na == \"30083\", \"Richland County\", \r\na == \"30085\", \"Roosevelt County\", \r\na == \"30087\", \"Rosebud County\", \r\na == \"30089\", \"Sanders County\", \r\na == \"30091\", \"Sheridan County\", \r\na == \"30093\", \"Silver Bow County\", \r\na == \"30095\", \"Stillwater County\", \r\na == \"30097\", \"Sweet Grass County\", \r\na == \"30099\", \"Teton County\", \r\na == \"30101\", \"Toole County\", \r\na == \"30103\", \"Treasure County\", \r\na == \"30105\", \"Valley County\", \r\na == \"30107\", \"Wheatland County\", \r\na == \"30109\", \"Wibaux County\", \r\na == \"30111\", \"Yellowstone County\", \r\na == \"31001\", \"Adams County\", \r\na == \"31003\", \"Antelope County\", \r\na == \"31005\", \"Arthur County\", \r\na == \"31007\", \"Banner County\", \r\na == \"31009\", \"Blaine County\", \r\na == \"31011\", \"Boone County\", \r\na == \"31013\", \"Box Butte County\", \r\na == \"31015\", \"Boyd County\", \r\na == \"31017\", \"Brown County\", \r\na == \"31019\", \"Buffalo County\", \r\na == \"31021\", \"Burt County\", \r\na == \"31023\", \"Butler County\", \r\na == \"31025\", \"Cass County\", \r\na == \"31027\", \"Cedar County\", \r\na == \"31029\", \"Chase County\", \r\na == \"31031\", \"Cherry County\", \r\na == \"31033\", \"Cheyenne County\", \r\na == \"31035\", \"Clay County\", \r\na == \"31037\", \"Colfax County\", \r\na == \"31039\", \"Cuming County\", \r\na == \"31041\", \"Custer County\", \r\na == \"31043\", \"Dakota County\", \r\na == \"31045\", \"Dawes County\", \r\na == \"31047\", \"Dawson County\", \r\na == \"31049\", \"Deuel County\", \r\na == \"31051\", \"Dixon County\", \r\na == \"31053\", \"Dodge County\", \r\na == \"31055\", \"Douglas County\", \r\na == \"31057\", \"Dundy County\", \r\na == \"31059\", \"Fillmore County\", \r\na == \"31061\", \"Franklin County\", \r\na == \"31063\", \"Frontier County\", \r\na == \"31065\", \"Furnas County\", \r\na == \"31067\", \"Gage County\", \r\na == \"31069\", \"Garden County\", \r\na == \"31071\", \"Garfield County\", \r\na == \"31073\", \"Gosper County\", \r\na == \"31075\", \"Grant County\", \r\na == \"31077\", \"Greeley County\", \r\na == \"31079\", \"Hall County\", \r\na == \"31081\", \"Hamilton County\", \r\na == \"31083\", \"Harlan County\", \r\na == \"31085\", \"Hayes County\", \r\na == \"31087\", \"Hitchcock County\", \r\na == \"31089\", \"Holt County\", \r\na == \"31091\", \"Hooker County\", \r\na == \"31093\", \"Howard County\", \r\na == \"31095\", \"Jefferson County\", \r\na == \"31097\", \"Johnson County\", \r\na == \"31099\", \"Kearney County\", \r\na == \"31101\", \"Keith County\", \r\na == \"31103\", \"Keya Paha County\", \r\na == \"31105\", \"Kimball County\", \r\na == \"31107\", \"Knox County\", \r\na == \"31109\", \"Lancaster County\", \r\na == \"31111\", \"Lincoln County\", \r\na == \"31113\", \"Logan County\", \r\na == \"31115\", \"Loup County\", \r\na == \"31117\", \"McPherson County\", \r\na == \"31119\", \"Madison County\", \r\na == \"31121\", \"Merrick County\", \r\na == \"31123\", \"Morrill County\", \r\na == \"31125\", \"Nance County\", \r\na == \"31127\", \"Nemaha County\", \r\na == \"31129\", \"Nuckolls County\", \r\na == \"31131\", \"Otoe County\", \r\na == \"31133\", \"Pawnee County\", \r\na == \"31135\", \"Perkins County\", \r\na == \"31137\", \"Phelps County\", \r\na == \"31139\", \"Pierce County\", \r\na == \"31141\", \"Platte County\", \r\na == \"31143\", \"Polk County\", \r\na == \"31145\", \"Red Willow County\", \r\na == \"31147\", \"Richardson County\", \r\na == \"31149\", \"Rock County\", \r\na == \"31151\", \"Saline County\", \r\na == \"31153\", \"Sarpy County\", \r\na == \"31155\", \"Saunders County\", \r\na == \"31157\", \"Scotts Bluff County\", \r\na == \"31159\", \"Seward County\", \r\na == \"31161\", \"Sheridan County\", \r\na == \"31163\", \"Sherman County\", \r\na == \"31165\", \"Sioux County\", \r\na == \"31167\", \"Stanton County\", \r\na == \"31169\", \"Thayer County\", \r\na == \"31171\", \"Thomas County\", \r\na == \"31173\", \"Thurston County\", \r\na == \"31175\", \"Valley County\", \r\na == \"31177\", \"Washington County\", \r\na == \"31179\", \"Wayne County\", \r\na == \"31181\", \"Webster County\", \r\na == \"31183\", \"Wheeler County\", \r\na == \"31185\", \"York County\", \r\na == \"32001\", \"Churchill County\", \r\na == \"32003\", \"Clark County\", \r\na == \"32005\", \"Douglas County\", \r\na == \"32007\", \"Elko County\", \r\na == \"32009\", \"Esmeralda County\", \r\na == \"32011\", \"Eureka County\", \r\na == \"32013\", \"Humboldt County\", \r\na == \"32015\", \"Lander County\", \r\na == \"32017\", \"Lincoln County\", \r\na == \"32019\", \"Lyon County\", \r\na == \"32021\", \"Mineral County\", \r\na == \"32023\", \"Nye County\", \r\na == \"32027\", \"Pershing County\", \r\na == \"32029\", \"Storey County\", \r\na == \"32031\", \"Washoe County\", \r\na == \"32033\", \"White Pine County\", \r\na == \"32510\", \"Carson City\", \r\na == \"33001\", \"Belknap County\", \r\na == \"33003\", \"Carroll County\", \r\na == \"33005\", \"Cheshire County\", \r\na == \"33007\", \"Coos County\", \r\na == \"33009\", \"Grafton County\", \r\na == \"33011\", \"Hillsborough County\", \r\na == \"33013\", \"Merrimack County\", \r\na == \"33015\", \"Rockingham County\", \r\na == \"33017\", \"Strafford County\", \r\na == \"33019\", \"Sullivan County\", \r\na == \"34001\", \"Atlantic County\", \r\na == \"34003\", \"Bergen County\", \r\na == \"34005\", \"Burlington County\", \r\na == \"34007\", \"Camden County\", \r\na == \"34009\", \"Cape May County\", \r\na == \"34011\", \"Cumberland County\", \r\na == \"34013\", \"Essex County\", \r\na == \"34015\", \"Gloucester County\", \r\na == \"34017\", \"Hudson County\", \r\na == \"34019\", \"Hunterdon County\", \r\na == \"34021\", \"Mercer County\", \r\na == \"34023\", \"Middlesex County\", \r\na == \"34025\", \"Monmouth County\", \r\na == \"34027\", \"Morris County\", \r\na == \"34029\", \"Ocean County\", \r\na == \"34031\", \"Passaic County\", \r\na == \"34033\", \"Salem County\", \r\na == \"34035\", \"Somerset County\", \r\na == \"34037\", \"Sussex County\", \r\na == \"34039\", \"Union County\", \r\na == \"34041\", \"Warren County\", \r\na == \"35001\", \"Bernalillo County\", \r\na == \"35003\", \"Catron County\", \r\na == \"35005\", \"Chaves County\", \r\na == \"35006\", \"Cibola County\", \r\na == \"35007\", \"Colfax County\", \r\na == \"35009\", \"Curry County\", \r\na == \"35011\", \"De Baca County\", \r\na == \"35013\", \"Doña Ana County\", \r\na == \"35015\", \"Eddy County\", \r\na == \"35017\", \"Grant County\", \r\na == \"35019\", \"Guadalupe County\", \r\na == \"35021\", \"Harding County\", \r\na == \"35023\", \"Hidalgo County\", \r\na == \"35025\", \"Lea County\", \r\na == \"35027\", \"Lincoln County\", \r\na == \"35028\", \"Los Alamos County\", \r\na == \"35029\", \"Luna County\", \r\na == \"35031\", \"McKinley County\", \r\na == \"35033\", \"Mora County\", \r\na == \"35035\", \"Otero County\", \r\na == \"35037\", \"Quay County\", \r\na == \"35039\", \"Rio Arriba County\", \r\na == \"35041\", \"Roosevelt County\", \r\na == \"35043\", \"Sandoval County\", \r\na == \"35045\", \"San Juan County\", \r\na == \"35047\", \"San Miguel County\", \r\na == \"35049\", \"Santa Fe County\", \r\na == \"35051\", \"Sierra County\", \r\na == \"35053\", \"Socorro County\", \r\na == \"35055\", \"Taos County\", \r\na == \"35057\", \"Torrance County\", \r\na == \"35059\", \"Union County\", \r\na == \"35061\", \"Valencia County\", \r\na == \"36001\", \"Albany County\", \r\na == \"36003\", \"Allegany County\", \r\na == \"36005\", \"Bronx County\", \r\na == \"36007\", \"Broome County\", \r\na == \"36009\", \"Cattaraugus County\", \r\na == \"36011\", \"Cayuga County\", \r\na == \"36013\", \"Chautauqua County\", \r\na == \"36015\", \"Chemung County\", \r\na == \"36017\", \"Chenango County\", \r\na == \"36019\", \"Clinton County\", \r\na == \"36021\", \"Columbia County\", \r\na == \"36023\", \"Cortland County\", \r\na == \"36025\", \"Delaware County\", \r\na == \"36027\", \"Dutchess County\", \r\na == \"36029\", \"Erie County\", \r\na == \"36031\", \"Essex County\", \r\na == \"36033\", \"Franklin County\", \r\na == \"36035\", \"Fulton County\", \r\na == \"36037\", \"Genesee County\", \r\na == \"36039\", \"Greene County\", \r\na == \"36041\", \"Hamilton County\", \r\na == \"36043\", \"Herkimer County\", \r\na == \"36045\", \"Jefferson County\", \r\na == \"36047\", \"Kings County\", \r\na == \"36049\", \"Lewis County\", \r\na == \"36051\", \"Livingston County\", \r\na == \"36053\", \"Madison County\", \r\na == \"36055\", \"Monroe County\", \r\na == \"36057\", \"Montgomery County\", \r\na == \"36059\", \"Nassau County\", \r\na == \"36061\", \"New York County\", \r\na == \"36063\", \"Niagara County\", \r\na == \"36065\", \"Oneida County\", \r\na == \"36067\", \"Onondaga County\", \r\na == \"36069\", \"Ontario County\", \r\na == \"36071\", \"Orange County\", \r\na == \"36073\", \"Orleans County\", \r\na == \"36075\", \"Oswego County\", \r\na == \"36077\", \"Otsego County\", \r\na == \"36079\", \"Putnam County\", \r\na == \"36081\", \"Queens County\", \r\na == \"36083\", \"Rensselaer County\", \r\na == \"36085\", \"Richmond County\", \r\na == \"36087\", \"Rockland County\", \r\na == \"36089\", \"St. Lawrence County\", \r\na == \"36091\", \"Saratoga County\", \r\na == \"36093\", \"Schenectady County\", \r\na == \"36095\", \"Schoharie County\", \r\na == \"36097\", \"Schuyler County\", \r\na == \"36099\", \"Seneca County\", \r\na == \"36101\", \"Steuben County\", \r\na == \"36103\", \"Suffolk County\", \r\na == \"36105\", \"Sullivan County\", \r\na == \"36107\", \"Tioga County\", \r\na == \"36109\", \"Tompkins County\", \r\na == \"36111\", \"Ulster County\", \r\na == \"36113\", \"Warren County\", \r\na == \"36115\", \"Washington County\", \r\na == \"36117\", \"Wayne County\", \r\na == \"36119\", \"Westchester County\", \r\na == \"36121\", \"Wyoming County\", \r\na == \"36123\", \"Yates County\", \r\na == \"37001\", \"Alamance County\", \r\na == \"37003\", \"Alexander County\", \r\na == \"37005\", \"Alleghany County\", \r\na == \"37007\", \"Anson County\", \r\na == \"37009\", \"Ashe County\", \r\na == \"37011\", \"Avery County\", \r\na == \"37013\", \"Beaufort County\", \r\na == \"37015\", \"Bertie County\", \r\na == \"37017\", \"Bladen County\", \r\na == \"37019\", \"Brunswick County\", \r\na == \"37021\", \"Buncombe County\", \r\na == \"37023\", \"Burke County\", \r\na == \"37025\", \"Cabarrus County\", \r\na == \"37027\", \"Caldwell County\", \r\na == \"37029\", \"Camden County\", \r\na == \"37031\", \"Carteret County\", \r\na == \"37033\", \"Caswell County\", \r\na == \"37035\", \"Catawba County\", \r\na == \"37037\", \"Chatham County\", \r\na == \"37039\", \"Cherokee County\", \r\na == \"37041\", \"Chowan County\", \r\na == \"37043\", \"Clay County\", \r\na == \"37045\", \"Cleveland County\", \r\na == \"37047\", \"Columbus County\", \r\na == \"37049\", \"Craven County\", \r\na == \"37051\", \"Cumberland County\", \r\na == \"37053\", \"Currituck County\", \r\na == \"37055\", \"Dare County\", \r\na == \"37057\", \"Davidson County\", \r\na == \"37059\", \"Davie County\", \r\na == \"37061\", \"Duplin County\", \r\na == \"37063\", \"Durham County\", \r\na == \"37065\", \"Edgecombe County\", \r\na == \"37067\", \"Forsyth County\", \r\na == \"37069\", \"Franklin County\", \r\na == \"37071\", \"Gaston County\", \r\na == \"37073\", \"Gates County\", \r\na == \"37075\", \"Graham County\", \r\na == \"37077\", \"Granville County\", \r\na == \"37079\", \"Greene County\", \r\na == \"37081\", \"Guilford County\", \r\na == \"37083\", \"Halifax County\", \r\na == \"37085\", \"Harnett County\", \r\na == \"37087\", \"Haywood County\", \r\na == \"37089\", \"Henderson County\", \r\na == \"37091\", \"Hertford County\", \r\na == \"37093\", \"Hoke County\", \r\na == \"37095\", \"Hyde County\", \r\na == \"37097\", \"Iredell County\", \r\na == \"37099\", \"Jackson County\", \r\na == \"37101\", \"Johnston County\", \r\na == \"37103\", \"Jones County\", \r\na == \"37105\", \"Lee County\", \r\na == \"37107\", \"Lenoir County\", \r\na == \"37109\", \"Lincoln County\", \r\na == \"37111\", \"McDowell County\", \r\na == \"37113\", \"Macon County\", \r\na == \"37115\", \"Madison County\", \r\na == \"37117\", \"Martin County\", \r\na == \"37119\", \"Mecklenburg County\", \r\na == \"37121\", \"Mitchell County\", \r\na == \"37123\", \"Montgomery County\", \r\na == \"37125\", \"Moore County\", \r\na == \"37127\", \"Nash County\", \r\na == \"37129\", \"New Hanover County\", \r\na == \"37131\", \"Northampton County\", \r\na == \"37133\", \"Onslow County\", \r\na == \"37135\", \"Orange County\", \r\na == \"37137\", \"Pamlico County\", \r\na == \"37139\", \"Pasquotank County\", \r\na == \"37141\", \"Pender County\", \r\na == \"37143\", \"Perquimans County\", \r\na == \"37145\", \"Person County\", \r\na == \"37147\", \"Pitt County\", \r\na == \"37149\", \"Polk County\", \r\na == \"37151\", \"Randolph County\", \r\na == \"37153\", \"Richmond County\", \r\na == \"37155\", \"Robeson County\", \r\na == \"37157\", \"Rockingham County\", \r\na == \"37159\", \"Rowan County\", \r\na == \"37161\", \"Rutherford County\", \r\na == \"37163\", \"Sampson County\", \r\na == \"37165\", \"Scotland County\", \r\na == \"37167\", \"Stanly County\", \r\na == \"37169\", \"Stokes County\", \r\na == \"37171\", \"Surry County\", \r\na == \"37173\", \"Swain County\", \r\na == \"37175\", \"Transylvania County\", \r\na == \"37177\", \"Tyrrell County\", \r\na == \"37179\", \"Union County\", \r\na == \"37181\", \"Vance County\", \r\na == \"37183\", \"Wake County\", \r\na == \"37185\", \"Warren County\", \r\na == \"37187\", \"Washington County\", \r\na == \"37189\", \"Watauga County\", \r\na == \"37191\", \"Wayne County\", \r\na == \"37193\", \"Wilkes County\", \r\na == \"37195\", \"Wilson County\", \r\na == \"37197\", \"Yadkin County\", \r\na == \"37199\", \"Yancey County\", \r\na == \"38001\", \"Adams County\", \r\na == \"38003\", \"Barnes County\", \r\na == \"38005\", \"Benson County\", \r\na == \"38007\", \"Billings County\", \r\na == \"38009\", \"Bottineau County\", \r\na == \"38011\", \"Bowman County\", \r\na == \"38013\", \"Burke County\", \r\na == \"38015\", \"Burleigh County\", \r\na == \"38017\", \"Cass County\", \r\na == \"38019\", \"Cavalier County\", \r\na == \"38021\", \"Dickey County\", \r\na == \"38023\", \"Divide County\", \r\na == \"38025\", \"Dunn County\", \r\na == \"38027\", \"Eddy County\", \r\na == \"38029\", \"Emmons County\", \r\na == \"38031\", \"Foster County\", \r\na == \"38033\", \"Golden Valley County\", \r\na == \"38035\", \"Grand Forks County\", \r\na == \"38037\", \"Grant County\", \r\na == \"38039\", \"Griggs County\", \r\na == \"38041\", \"Hettinger County\", \r\na == \"38043\", \"Kidder County\", \r\na == \"38045\", \"LaMoure County\", \r\na == \"38047\", \"Logan County\", \r\na == \"38049\", \"McHenry County\", \r\na == \"38051\", \"McIntosh County\", \r\na == \"38053\", \"McKenzie County\", \r\na == \"38055\", \"McLean County\", \r\na == \"38057\", \"Mercer County\", \r\na == \"38059\", \"Morton County\", \r\na == \"38061\", \"Mountrail County\", \r\na == \"38063\", \"Nelson County\", \r\na == \"38065\", \"Oliver County\", \r\na == \"38067\", \"Pembina County\", \r\na == \"38069\", \"Pierce County\", \r\na == \"38071\", \"Ramsey County\", \r\na == \"38073\", \"Ransom County\", \r\na == \"38075\", \"Renville County\", \r\na == \"38077\", \"Richland County\", \r\na == \"38079\", \"Rolette County\", \r\na == \"38081\", \"Sargent County\", \r\na == \"38083\", \"Sheridan County\", \r\na == \"38085\", \"Sioux County\", \r\na == \"38087\", \"Slope County\", \r\na == \"38089\", \"Stark County\", \r\na == \"38091\", \"Steele County\", \r\na == \"38093\", \"Stutsman County\", \r\na == \"38095\", \"Towner County\", \r\na == \"38097\", \"Traill County\", \r\na == \"38099\", \"Walsh County\", \r\na == \"38101\", \"Ward County\", \r\na == \"38103\", \"Wells County\", \r\na == \"38105\", \"Williams County\", \r\na == \"39001\", \"Adams County\", \r\na == \"39003\", \"Allen County\", \r\na == \"39005\", \"Ashland County\", \r\na == \"39007\", \"Ashtabula County\", \r\na == \"39009\", \"Athens County\", \r\na == \"39011\", \"Auglaize County\", \r\na == \"39013\", \"Belmont County\", \r\na == \"39015\", \"Brown County\", \r\na == \"39017\", \"Butler County\", \r\na == \"39019\", \"Carroll County\", \r\na == \"39021\", \"Champaign County\", \r\na == \"39023\", \"Clark County\", \r\na == \"39025\", \"Clermont County\", \r\na == \"39027\", \"Clinton County\", \r\na == \"39029\", \"Columbiana County\", \r\na == \"39031\", \"Coshocton County\", \r\na == \"39033\", \"Crawford County\", \r\na == \"39035\", \"Cuyahoga County\", \r\na == \"39037\", \"Darke County\", \r\na == \"39039\", \"Defiance County\", \r\na == \"39041\", \"Delaware County\", \r\na == \"39043\", \"Erie County\", \r\na == \"39045\", \"Fairfield County\", \r\na == \"39047\", \"Fayette County\", \r\na == \"39049\", \"Franklin County\", \r\na == \"39051\", \"Fulton County\", \r\na == \"39053\", \"Gallia County\", \r\na == \"39055\", \"Geauga County\", \r\na == \"39057\", \"Greene County\", \r\na == \"39059\", \"Guernsey County\", \r\na == \"39061\", \"Hamilton County\", \r\na == \"39063\", \"Hancock County\", \r\na == \"39065\", \"Hardin County\", \r\na == \"39067\", \"Harrison County\", \r\na == \"39069\", \"Henry County\", \r\na == \"39071\", \"Highland County\", \r\na == \"39073\", \"Hocking County\", \r\na == \"39075\", \"Holmes County\", \r\na == \"39077\", \"Huron County\", \r\na == \"39079\", \"Jackson County\", \r\na == \"39081\", \"Jefferson County\", \r\na == \"39083\", \"Knox County\", \r\na == \"39085\", \"Lake County\", \r\na == \"39087\", \"Lawrence County\", \r\na == \"39089\", \"Licking County\", \r\na == \"39091\", \"Logan County\", \r\na == \"39093\", \"Lorain County\", \r\na == \"39095\", \"Lucas County\", \r\na == \"39097\", \"Madison County\", \r\na == \"39099\", \"Mahoning County\", \r\na == \"39101\", \"Marion County\", \r\na == \"39103\", \"Medina County\", \r\na == \"39105\", \"Meigs County\", \r\na == \"39107\", \"Mercer County\", \r\na == \"39109\", \"Miami County\", \r\na == \"39111\", \"Monroe County\", \r\na == \"39113\", \"Montgomery County\", \r\na == \"39115\", \"Morgan County\", \r\na == \"39117\", \"Morrow County\", \r\na == \"39119\", \"Muskingum County\", \r\na == \"39121\", \"Noble County\", \r\na == \"39123\", \"Ottawa County\", \r\na == \"39125\", \"Paulding County\", \r\na == \"39127\", \"Perry County\", \r\na == \"39129\", \"Pickaway County\", \r\na == \"39131\", \"Pike County\", \r\na == \"39133\", \"Portage County\", \r\na == \"39135\", \"Preble County\", \r\na == \"39137\", \"Putnam County\", \r\na == \"39139\", \"Richland County\", \r\na == \"39141\", \"Ross County\", \r\na == \"39143\", \"Sandusky County\", \r\na == \"39145\", \"Scioto County\", \r\na == \"39147\", \"Seneca County\", \r\na == \"39149\", \"Shelby County\", \r\na == \"39151\", \"Stark County\", \r\na == \"39153\", \"Summit County\", \r\na == \"39155\", \"Trumbull County\", \r\na == \"39157\", \"Tuscarawas County\", \r\na == \"39159\", \"Union County\", \r\na == \"39161\", \"Van Wert County\", \r\na == \"39163\", \"Vinton County\", \r\na == \"39165\", \"Warren County\", \r\na == \"39167\", \"Washington County\", \r\na == \"39169\", \"Wayne County\", \r\na == \"39171\", \"Williams County\", \r\na == \"39173\", \"Wood County\", \r\na == \"39175\", \"Wyandot County\", \r\na == \"40001\", \"Adair County\", \r\na == \"40003\", \"Alfalfa County\", \r\na == \"40005\", \"Atoka County\", \r\na == \"40007\", \"Beaver County\", \r\na == \"40009\", \"Beckham County\", \r\na == \"40011\", \"Blaine County\", \r\na == \"40013\", \"Bryan County\", \r\na == \"40015\", \"Caddo County\", \r\na == \"40017\", \"Canadian County\", \r\na == \"40019\", \"Carter County\", \r\na == \"40021\", \"Cherokee County\", \r\na == \"40023\", \"Choctaw County\", \r\na == \"40025\", \"Cimarron County\", \r\na == \"40027\", \"Cleveland County\", \r\na == \"40029\", \"Coal County\", \r\na == \"40031\", \"Comanche County\", \r\na == \"40033\", \"Cotton County\", \r\na == \"40035\", \"Craig County\", \r\na == \"40037\", \"Creek County\", \r\na == \"40039\", \"Custer County\", \r\na == \"40041\", \"Delaware County\", \r\na == \"40043\", \"Dewey County\", \r\na == \"40045\", \"Ellis County\", \r\na == \"40047\", \"Garfield County\", \r\na == \"40049\", \"Garvin County\", \r\na == \"40051\", \"Grady County\", \r\na == \"40053\", \"Grant County\", \r\na == \"40055\", \"Greer County\", \r\na == \"40057\", \"Harmon County\", \r\na == \"40059\", \"Harper County\", \r\na == \"40061\", \"Haskell County\", \r\na == \"40063\", \"Hughes County\", \r\na == \"40065\", \"Jackson County\", \r\na == \"40067\", \"Jefferson County\", \r\na == \"40069\", \"Johnston County\", \r\na == \"40071\", \"Kay County\", \r\na == \"40073\", \"Kingfisher County\", \r\na == \"40075\", \"Kiowa County\", \r\na == \"40077\", \"Latimer County\", \r\na == \"40079\", \"Le Flore County\", \r\na == \"40081\", \"Lincoln County\", \r\na == \"40083\", \"Logan County\", \r\na == \"40085\", \"Love County\", \r\na == \"40087\", \"McClain County\", \r\na == \"40089\", \"McCurtain County\", \r\na == \"40091\", \"McIntosh County\", \r\na == \"40093\", \"Major County\", \r\na == \"40095\", \"Marshall County\", \r\na == \"40097\", \"Mayes County\", \r\na == \"40099\", \"Murray County\", \r\na == \"40101\", \"Muskogee County\", \r\na == \"40103\", \"Noble County\", \r\na == \"40105\", \"Nowata County\", \r\na == \"40107\", \"Okfuskee County\", \r\na == \"40109\", \"Oklahoma County\", \r\na == \"40111\", \"Okmulgee County\", \r\na == \"40113\", \"Osage County\", \r\na == \"40115\", \"Ottawa County\", \r\na == \"40117\", \"Pawnee County\", \r\na == \"40119\", \"Payne County\", \r\na == \"40121\", \"Pittsburg County\", \r\na == \"40123\", \"Pontotoc County\", \r\na == \"40125\", \"Pottawatomie County\", \r\na == \"40127\", \"Pushmataha County\", \r\na == \"40129\", \"Roger Mills County\", \r\na == \"40131\", \"Rogers County\", \r\na == \"40133\", \"Seminole County\", \r\na == \"40135\", \"Sequoyah County\", \r\na == \"40137\", \"Stephens County\", \r\na == \"40139\", \"Texas County\", \r\na == \"40141\", \"Tillman County\", \r\na == \"40143\", \"Tulsa County\", \r\na == \"40145\", \"Wagoner County\", \r\na == \"40147\", \"Washington County\", \r\na == \"40149\", \"Washita County\", \r\na == \"40151\", \"Woods County\", \r\na == \"40153\", \"Woodward County\", \r\na == \"41001\", \"Baker County\", \r\na == \"41003\", \"Benton County\", \r\na == \"41005\", \"Clackamas County\", \r\na == \"41007\", \"Clatsop County\", \r\na == \"41009\", \"Columbia County\", \r\na == \"41011\", \"Coos County\", \r\na == \"41013\", \"Crook County\", \r\na == \"41015\", \"Curry County\", \r\na == \"41017\", \"Deschutes County\", \r\na == \"41019\", \"Douglas County\", \r\na == \"41021\", \"Gilliam County\", \r\na == \"41023\", \"Grant County\", \r\na == \"41025\", \"Harney County\", \r\na == \"41027\", \"Hood River County\", \r\na == \"41029\", \"Jackson County\", \r\na == \"41031\", \"Jefferson County\", \r\na == \"41033\", \"Josephine County\", \r\na == \"41035\", \"Klamath County\", \r\na == \"41037\", \"Lake County\", \r\na == \"41039\", \"Lane County\", \r\na == \"41041\", \"Lincoln County\", \r\na == \"41043\", \"Linn County\", \r\na == \"41045\", \"Malheur County\", \r\na == \"41047\", \"Marion County\", \r\na == \"41049\", \"Morrow County\", \r\na == \"41051\", \"Multnomah County\", \r\na == \"41053\", \"Polk County\", \r\na == \"41055\", \"Sherman County\", \r\na == \"41057\", \"Tillamook County\", \r\na == \"41059\", \"Umatilla County\", \r\na == \"41061\", \"Union County\", \r\na == \"41063\", \"Wallowa County\", \r\na == \"41065\", \"Wasco County\", \r\na == \"41067\", \"Washington County\", \r\na == \"41069\", \"Wheeler County\", \r\na == \"41071\", \"Yamhill County\", \r\na == \"42001\", \"Adams County\", \r\na == \"42003\", \"Allegheny County\", \r\na == \"42005\", \"Armstrong County\", \r\na == \"42007\", \"Beaver County\", \r\na == \"42009\", \"Bedford County\", \r\na == \"42011\", \"Berks County\", \r\na == \"42013\", \"Blair County\", \r\na == \"42015\", \"Bradford County\", \r\na == \"42017\", \"Bucks County\", \r\na == \"42019\", \"Butler County\", \r\na == \"42021\", \"Cambria County\", \r\na == \"42023\", \"Cameron County\", \r\na == \"42025\", \"Carbon County\", \r\na == \"42027\", \"Centre County\", \r\na == \"42029\", \"Chester County\", \r\na == \"42031\", \"Clarion County\", \r\na == \"42033\", \"Clearfield County\", \r\na == \"42035\", \"Clinton County\", \r\na == \"42037\", \"Columbia County\", \r\na == \"42039\", \"Crawford County\", \r\na == \"42041\", \"Cumberland County\", \r\na == \"42043\", \"Dauphin County\", \r\na == \"42045\", \"Delaware County\", \r\na == \"42047\", \"Elk County\", \r\na == \"42049\", \"Erie County\", \r\na == \"42051\", \"Fayette County\", \r\na == \"42053\", \"Forest County\", \r\na == \"42055\", \"Franklin County\", \r\na == \"42057\", \"Fulton County\", \r\na == \"42059\", \"Greene County\", \r\na == \"42061\", \"Huntingdon County\", \r\na == \"42063\", \"Indiana County\", \r\na == \"42065\", \"Jefferson County\", \r\na == \"42067\", \"Juniata County\", \r\na == \"42069\", \"Lackawanna County\", \r\na == \"42071\", \"Lancaster County\", \r\na == \"42073\", \"Lawrence County\", \r\na == \"42075\", \"Lebanon County\", \r\na == \"42077\", \"Lehigh County\", \r\na == \"42079\", \"Luzerne County\", \r\na == \"42081\", \"Lycoming County\", \r\na == \"42083\", \"McKean County\", \r\na == \"42085\", \"Mercer County\", \r\na == \"42087\", \"Mifflin County\", \r\na == \"42089\", \"Monroe County\", \r\na == \"42091\", \"Montgomery County\", \r\na == \"42093\", \"Montour County\", \r\na == \"42095\", \"Northampton County\", \r\na == \"42097\", \"Northumberland County\", \r\na == \"42099\", \"Perry County\", \r\na == \"42101\", \"Philadelphia County\", \r\na == \"42103\", \"Pike County\", \r\na == \"42105\", \"Potter County\", \r\na == \"42107\", \"Schuylkill County\", \r\na == \"42109\", \"Snyder County\", \r\na == \"42111\", \"Somerset County\", \r\na == \"42113\", \"Sullivan County\", \r\na == \"42115\", \"Susquehanna County\", \r\na == \"42117\", \"Tioga County\", \r\na == \"42119\", \"Union County\", \r\na == \"42121\", \"Venango County\", \r\na == \"42123\", \"Warren County\", \r\na == \"42125\", \"Washington County\", \r\na == \"42127\", \"Wayne County\", \r\na == \"42129\", \"Westmoreland County\", \r\na == \"42131\", \"Wyoming County\", \r\na == \"42133\", \"York County\", \r\na == \"44001\", \"Bristol County\", \r\na == \"44003\", \"Kent County\", \r\na == \"44005\", \"Newport County\", \r\na == \"44007\", \"Providence County\", \r\na == \"44009\", \"Washington County\", \r\na == \"45001\", \"Abbeville County\", \r\na == \"45003\", \"Aiken County\", \r\na == \"45005\", \"Allendale County\", \r\na == \"45007\", \"Anderson County\", \r\na == \"45009\", \"Bamberg County\", \r\na == \"45011\", \"Barnwell County\", \r\na == \"45013\", \"Beaufort County\", \r\na == \"45015\", \"Berkeley County\", \r\na == \"45017\", \"Calhoun County\", \r\na == \"45019\", \"Charleston County\", \r\na == \"45021\", \"Cherokee County\", \r\na == \"45023\", \"Chester County\", \r\na == \"45025\", \"Chesterfield County\", \r\na == \"45027\", \"Clarendon County\", \r\na == \"45029\", \"Colleton County\", \r\na == \"45031\", \"Darlington County\", \r\na == \"45033\", \"Dillon County\", \r\na == \"45035\", \"Dorchester County\", \r\na == \"45037\", \"Edgefield County\", \r\na == \"45039\", \"Fairfield County\", \r\na == \"45041\", \"Florence County\", \r\na == \"45043\", \"Georgetown County\", \r\na == \"45045\", \"Greenville County\", \r\na == \"45047\", \"Greenwood County\", \r\na == \"45049\", \"Hampton County\", \r\na == \"45051\", \"Horry County\", \r\na == \"45053\", \"Jasper County\", \r\na == \"45055\", \"Kershaw County\", \r\na == \"45057\", \"Lancaster County\", \r\na == \"45059\", \"Laurens County\", \r\na == \"45061\", \"Lee County\", \r\na == \"45063\", \"Lexington County\", \r\na == \"45065\", \"McCormick County\", \r\na == \"45067\", \"Marion County\", \r\na == \"45069\", \"Marlboro County\", \r\na == \"45071\", \"Newberry County\", \r\na == \"45073\", \"Oconee County\", \r\na == \"45075\", \"Orangeburg County\", \r\na == \"45077\", \"Pickens County\", \r\na == \"45079\", \"Richland County\", \r\na == \"45081\", \"Saluda County\", \r\na == \"45083\", \"Spartanburg County\", \r\na == \"45085\", \"Sumter County\", \r\na == \"45087\", \"Union County\", \r\na == \"45089\", \"Williamsburg County\", \r\na == \"45091\", \"York County\", \r\na == \"46003\", \"Aurora County\", \r\na == \"46005\", \"Beadle County\", \r\na == \"46007\", \"Bennett County\", \r\na == \"46009\", \"Bon Homme County\", \r\na == \"46011\", \"Brookings County\", \r\na == \"46013\", \"Brown County\", \r\na == \"46015\", \"Brule County\", \r\na == \"46017\", \"Buffalo County\", \r\na == \"46019\", \"Butte County\", \r\na == \"46021\", \"Campbell County\", \r\na == \"46023\", \"Charles Mix County\", \r\na == \"46025\", \"Clark County\", \r\na == \"46027\", \"Clay County\", \r\na == \"46029\", \"Codington County\", \r\na == \"46031\", \"Corson County\", \r\na == \"46033\", \"Custer County\", \r\na == \"46035\", \"Davison County\", \r\na == \"46037\", \"Day County\", \r\na == \"46039\", \"Deuel County\", \r\na == \"46041\", \"Dewey County\", \r\na == \"46043\", \"Douglas County\", \r\na == \"46045\", \"Edmunds County\", \r\na == \"46047\", \"Fall River County\", \r\na == \"46049\", \"Faulk County\", \r\na == \"46051\", \"Grant County\", \r\na == \"46053\", \"Gregory County\", \r\na == \"46055\", \"Haakon County\", \r\na == \"46057\", \"Hamlin County\", \r\na == \"46059\", \"Hand County\", \r\na == \"46061\", \"Hanson County\", \r\na == \"46063\", \"Harding County\", \r\na == \"46065\", \"Hughes County\", \r\na == \"46067\", \"Hutchinson County\", \r\na == \"46069\", \"Hyde County\", \r\na == \"46071\", \"Jackson County\", \r\na == \"46073\", \"Jerauld County\", \r\na == \"46075\", \"Jones County\", \r\na == \"46077\", \"Kingsbury County\", \r\na == \"46079\", \"Lake County\", \r\na == \"46081\", \"Lawrence County\", \r\na == \"46083\", \"Lincoln County\", \r\na == \"46085\", \"Lyman County\", \r\na == \"46087\", \"McCook County\", \r\na == \"46089\", \"McPherson County\", \r\na == \"46091\", \"Marshall County\", \r\na == \"46093\", \"Meade County\", \r\na == \"46095\", \"Mellette County\", \r\na == \"46097\", \"Miner County\", \r\na == \"46099\", \"Minnehaha County\", \r\na == \"46101\", \"Moody County\", \r\na == \"46102\", \"Oglala Lakota County\", \r\na == \"46103\", \"Pennington County\", \r\na == \"46105\", \"Perkins County\", \r\na == \"46107\", \"Potter County\", \r\na == \"46109\", \"Roberts County\", \r\na == \"46111\", \"Sanborn County\", \r\na == \"46115\", \"Spink County\", \r\na == \"46117\", \"Stanley County\", \r\na == \"46119\", \"Sully County\", \r\na == \"46121\", \"Todd County\", \r\na == \"46123\", \"Tripp County\", \r\na == \"46125\", \"Turner County\", \r\na == \"46127\", \"Union County\", \r\na == \"46129\", \"Walworth County\", \r\na == \"46135\", \"Yankton County\", \r\na == \"46137\", \"Ziebach County\", \r\na == \"47001\", \"Anderson County\", \r\na == \"47003\", \"Bedford County\", \r\na == \"47005\", \"Benton County\", \r\na == \"47007\", \"Bledsoe County\", \r\na == \"47009\", \"Blount County\", \r\na == \"47011\", \"Bradley County\", \r\na == \"47013\", \"Campbell County\", \r\na == \"47015\", \"Cannon County\", \r\na == \"47017\", \"Carroll County\", \r\na == \"47019\", \"Carter County\", \r\na == \"47021\", \"Cheatham County\", \r\na == \"47023\", \"Chester County\", \r\na == \"47025\", \"Claiborne County\", \r\na == \"47027\", \"Clay County\", \r\na == \"47029\", \"Cocke County\", \r\na == \"47031\", \"Coffee County\", \r\na == \"47033\", \"Crockett County\", \r\na == \"47035\", \"Cumberland County\", \r\na == \"47037\", \"Davidson County\", \r\na == \"47039\", \"Decatur County\", \r\na == \"47041\", \"DeKalb County\", \r\na == \"47043\", \"Dickson County\", \r\na == \"47045\", \"Dyer County\", \r\na == \"47047\", \"Fayette County\", \r\na == \"47049\", \"Fentress County\", \r\na == \"47051\", \"Franklin County\", \r\na == \"47053\", \"Gibson County\", \r\na == \"47055\", \"Giles County\", \r\na == \"47057\", \"Grainger County\", \r\na == \"47059\", \"Greene County\", \r\na == \"47061\", \"Grundy County\", \r\na == \"47063\", \"Hamblen County\", \r\na == \"47065\", \"Hamilton County\", \r\na == \"47067\", \"Hancock County\", \r\na == \"47069\", \"Hardeman County\", \r\na == \"47071\", \"Hardin County\", \r\na == \"47073\", \"Hawkins County\", \r\na == \"47075\", \"Haywood County\", \r\na == \"47077\", \"Henderson County\", \r\na == \"47079\", \"Henry County\", \r\na == \"47081\", \"Hickman County\", \r\na == \"47083\", \"Houston County\", \r\na == \"47085\", \"Humphreys County\", \r\na == \"47087\", \"Jackson County\", \r\na == \"47089\", \"Jefferson County\", \r\na == \"47091\", \"Johnson County\", \r\na == \"47093\", \"Knox County\", \r\na == \"47095\", \"Lake County\", \r\na == \"47097\", \"Lauderdale County\", \r\na == \"47099\", \"Lawrence County\", \r\na == \"47101\", \"Lewis County\", \r\na == \"47103\", \"Lincoln County\", \r\na == \"47105\", \"Loudon County\", \r\na == \"47107\", \"McMinn County\", \r\na == \"47109\", \"McNairy County\", \r\na == \"47111\", \"Macon County\", \r\na == \"47113\", \"Madison County\", \r\na == \"47115\", \"Marion County\", \r\na == \"47117\", \"Marshall County\", \r\na == \"47119\", \"Maury County\", \r\na == \"47121\", \"Meigs County\", \r\na == \"47123\", \"Monroe County\", \r\na == \"47125\", \"Montgomery County\", \r\na == \"47127\", \"Moore County\", \r\na == \"47129\", \"Morgan County\", \r\na == \"47131\", \"Obion County\", \r\na == \"47133\", \"Overton County\", \r\na == \"47135\", \"Perry County\", \r\na == \"47137\", \"Pickett County\", \r\na == \"47139\", \"Polk County\", \r\na == \"47141\", \"Putnam County\", \r\na == \"47143\", \"Rhea County\", \r\na == \"47145\", \"Roane County\", \r\na == \"47147\", \"Robertson County\", \r\na == \"47149\", \"Rutherford County\", \r\na == \"47151\", \"Scott County\", \r\na == \"47153\", \"Sequatchie County\", \r\na == \"47155\", \"Sevier County\", \r\na == \"47157\", \"Shelby County\", \r\na == \"47159\", \"Smith County\", \r\na == \"47161\", \"Stewart County\", \r\na == \"47163\", \"Sullivan County\", \r\na == \"47165\", \"Sumner County\", \r\na == \"47167\", \"Tipton County\", \r\na == \"47169\", \"Trousdale County\", \r\na == \"47171\", \"Unicoi County\", \r\na == \"47173\", \"Union County\", \r\na == \"47175\", \"Van Buren County\", \r\na == \"47177\", \"Warren County\", \r\na == \"47179\", \"Washington County\", \r\na == \"47181\", \"Wayne County\", \r\na == \"47183\", \"Weakley County\", \r\na == \"47185\", \"White County\", \r\na == \"47187\", \"Williamson County\", \r\na == \"47189\", \"Wilson County\", \r\na == \"48001\", \"Anderson County\", \r\na == \"48003\", \"Andrews County\", \r\na == \"48005\", \"Angelina County\", \r\na == \"48007\", \"Aransas County\", \r\na == \"48009\", \"Archer County\", \r\na == \"48011\", \"Armstrong County\", \r\na == \"48013\", \"Atascosa County\", \r\na == \"48015\", \"Austin County\", \r\na == \"48017\", \"Bailey County\", \r\na == \"48019\", \"Bandera County\", \r\na == \"48021\", \"Bastrop County\", \r\na == \"48023\", \"Baylor County\", \r\na == \"48025\", \"Bee County\", \r\na == \"48027\", \"Bell County\", \r\na == \"48029\", \"Bexar County\", \r\na == \"48031\", \"Blanco County\", \r\na == \"48033\", \"Borden County\", \r\na == \"48035\", \"Bosque County\", \r\na == \"48037\", \"Bowie County\", \r\na == \"48039\", \"Brazoria County\", \r\na == \"48041\", \"Brazos County\", \r\na == \"48043\", \"Brewster County\", \r\na == \"48045\", \"Briscoe County\", \r\na == \"48047\", \"Brooks County\", \r\na == \"48049\", \"Brown County\", \r\na == \"48051\", \"Burleson County\", \r\na == \"48053\", \"Burnet County\", \r\na == \"48055\", \"Caldwell County\", \r\na == \"48057\", \"Calhoun County\", \r\na == \"48059\", \"Callahan County\", \r\na == \"48061\", \"Cameron County\", \r\na == \"48063\", \"Camp County\", \r\na == \"48065\", \"Carson County\", \r\na == \"48067\", \"Cass County\", \r\na == \"48069\", \"Castro County\", \r\na == \"48071\", \"Chambers County\", \r\na == \"48073\", \"Cherokee County\", \r\na == \"48075\", \"Childress County\", \r\na == \"48077\", \"Clay County\", \r\na == \"48079\", \"Cochran County\", \r\na == \"48081\", \"Coke County\", \r\na == \"48083\", \"Coleman County\", \r\na == \"48085\", \"Collin County\", \r\na == \"48087\", \"Collingsworth County\", \r\na == \"48089\", \"Colorado County\", \r\na == \"48091\", \"Comal County\", \r\na == \"48093\", \"Comanche County\", \r\na == \"48095\", \"Concho County\", \r\na == \"48097\", \"Cooke County\", \r\na == \"48099\", \"Coryell County\", \r\na == \"48101\", \"Cottle County\", \r\na == \"48103\", \"Crane County\", \r\na == \"48105\", \"Crockett County\", \r\na == \"48107\", \"Crosby County\", \r\na == \"48109\", \"Culberson County\", \r\na == \"48111\", \"Dallam County\", \r\na == \"48113\", \"Dallas County\", \r\na == \"48115\", \"Dawson County\", \r\na == \"48117\", \"Deaf Smith County\", \r\na == \"48119\", \"Delta County\", \r\na == \"48121\", \"Denton County\", \r\na == \"48123\", \"DeWitt County\", \r\na == \"48125\", \"Dickens County\", \r\na == \"48127\", \"Dimmit County\", \r\na == \"48129\", \"Donley County\", \r\na == \"48131\", \"Duval County\", \r\na == \"48133\", \"Eastland County\", \r\na == \"48135\", \"Ector County\", \r\na == \"48137\", \"Edwards County\", \r\na == \"48139\", \"Ellis County\", \r\na == \"48141\", \"El Paso County\", \r\na == \"48143\", \"Erath County\", \r\na == \"48145\", \"Falls County\", \r\na == \"48147\", \"Fannin County\", \r\na == \"48149\", \"Fayette County\", \r\na == \"48151\", \"Fisher County\", \r\na == \"48153\", \"Floyd County\", \r\na == \"48155\", \"Foard County\", \r\na == \"48157\", \"Fort Bend County\", \r\na == \"48159\", \"Franklin County\", \r\na == \"48161\", \"Freestone County\", \r\na == \"48163\", \"Frio County\", \r\na == \"48165\", \"Gaines County\", \r\na == \"48167\", \"Galveston County\", \r\na == \"48169\", \"Garza County\", \r\na == \"48171\", \"Gillespie County\", \r\na == \"48173\", \"Glasscock County\", \r\na == \"48175\", \"Goliad County\", \r\na == \"48177\", \"Gonzales County\", \r\na == \"48179\", \"Gray County\", \r\na == \"48181\", \"Grayson County\", \r\na == \"48183\", \"Gregg County\", \r\na == \"48185\", \"Grimes County\", \r\na == \"48187\", \"Guadalupe County\", \r\na == \"48189\", \"Hale County\", \r\na == \"48191\", \"Hall County\", \r\na == \"48193\", \"Hamilton County\", \r\na == \"48195\", \"Hansford County\", \r\na == \"48197\", \"Hardeman County\", \r\na == \"48199\", \"Hardin County\", \r\na == \"48201\", \"Harris County\", \r\na == \"48203\", \"Harrison County\", \r\na == \"48205\", \"Hartley County\", \r\na == \"48207\", \"Haskell County\", \r\na == \"48209\", \"Hays County\", \r\na == \"48211\", \"Hemphill County\", \r\na == \"48213\", \"Henderson County\", \r\na == \"48215\", \"Hidalgo County\", \r\na == \"48217\", \"Hill County\", \r\na == \"48219\", \"Hockley County\", \r\na == \"48221\", \"Hood County\", \r\na == \"48223\", \"Hopkins County\", \r\na == \"48225\", \"Houston County\", \r\na == \"48227\", \"Howard County\", \r\na == \"48229\", \"Hudspeth County\", \r\na == \"48231\", \"Hunt County\", \r\na == \"48233\", \"Hutchinson County\", \r\na == \"48235\", \"Irion County\", \r\na == \"48237\", \"Jack County\", \r\na == \"48239\", \"Jackson County\", \r\na == \"48241\", \"Jasper County\", \r\na == \"48243\", \"Jeff Davis County\", \r\na == \"48245\", \"Jefferson County\", \r\na == \"48247\", \"Jim Hogg County\", \r\na == \"48249\", \"Jim Wells County\", \r\na == \"48251\", \"Johnson County\", \r\na == \"48253\", \"Jones County\", \r\na == \"48255\", \"Karnes County\", \r\na == \"48257\", \"Kaufman County\", \r\na == \"48259\", \"Kendall County\", \r\na == \"48261\", \"Kenedy County\", \r\na == \"48263\", \"Kent County\", \r\na == \"48265\", \"Kerr County\", \r\na == \"48267\", \"Kimble County\", \r\na == \"48269\", \"King County\", \r\na == \"48271\", \"Kinney County\", \r\na == \"48273\", \"Kleberg County\", \r\na == \"48275\", \"Knox County\", \r\na == \"48277\", \"Lamar County\", \r\na == \"48279\", \"Lamb County\", \r\na == \"48281\", \"Lampasas County\", \r\na == \"48283\", \"La Salle County\", \r\na == \"48285\", \"Lavaca County\", \r\na == \"48287\", \"Lee County\", \r\na == \"48289\", \"Leon County\", \r\na == \"48291\", \"Liberty County\", \r\na == \"48293\", \"Limestone County\", \r\na == \"48295\", \"Lipscomb County\", \r\na == \"48297\", \"Live Oak County\", \r\na == \"48299\", \"Llano County\", \r\na == \"48301\", \"Loving County\", \r\na == \"48303\", \"Lubbock County\", \r\na == \"48305\", \"Lynn County\", \r\na == \"48307\", \"McCulloch County\", \r\na == \"48309\", \"McLennan County\", \r\na == \"48311\", \"McMullen County\", \r\na == \"48313\", \"Madison County\", \r\na == \"48315\", \"Marion County\", \r\na == \"48317\", \"Martin County\", \r\na == \"48319\", \"Mason County\", \r\na == \"48321\", \"Matagorda County\", \r\na == \"48323\", \"Maverick County\", \r\na == \"48325\", \"Medina County\", \r\na == \"48327\", \"Menard County\", \r\na == \"48329\", \"Midland County\", \r\na == \"48331\", \"Milam County\", \r\na == \"48333\", \"Mills County\", \r\na == \"48335\", \"Mitchell County\", \r\na == \"48337\", \"Montague County\", \r\na == \"48339\", \"Montgomery County\", \r\na == \"48341\", \"Moore County\", \r\na == \"48343\", \"Morris County\", \r\na == \"48345\", \"Motley County\", \r\na == \"48347\", \"Nacogdoches County\", \r\na == \"48349\", \"Navarro County\", \r\na == \"48351\", \"Newton County\", \r\na == \"48353\", \"Nolan County\", \r\na == \"48355\", \"Nueces County\", \r\na == \"48357\", \"Ochiltree County\", \r\na == \"48359\", \"Oldham County\", \r\na == \"48361\", \"Orange County\", \r\na == \"48363\", \"Palo Pinto County\", \r\na == \"48365\", \"Panola County\", \r\na == \"48367\", \"Parker County\", \r\na == \"48369\", \"Parmer County\", \r\na == \"48371\", \"Pecos County\", \r\na == \"48373\", \"Polk County\", \r\na == \"48375\", \"Potter County\", \r\na == \"48377\", \"Presidio County\", \r\na == \"48379\", \"Rains County\", \r\na == \"48381\", \"Randall County\", \r\na == \"48383\", \"Reagan County\", \r\na == \"48385\", \"Real County\", \r\na == \"48387\", \"Red River County\", \r\na == \"48389\", \"Reeves County\", \r\na == \"48391\", \"Refugio County\", \r\na == \"48393\", \"Roberts County\", \r\na == \"48395\", \"Robertson County\", \r\na == \"48397\", \"Rockwall County\", \r\na == \"48399\", \"Runnels County\", \r\na == \"48401\", \"Rusk County\", \r\na == \"48403\", \"Sabine County\", \r\na == \"48405\", \"San Augustine County\", \r\na == \"48407\", \"San Jacinto County\", \r\na == \"48409\", \"San Patricio County\", \r\na == \"48411\", \"San Saba County\", \r\na == \"48413\", \"Schleicher County\", \r\na == \"48415\", \"Scurry County\", \r\na == \"48417\", \"Shackelford County\", \r\na == \"48419\", \"Shelby County\", \r\na == \"48421\", \"Sherman County\", \r\na == \"48423\", \"Smith County\", \r\na == \"48425\", \"Somervell County\", \r\na == \"48427\", \"Starr County\", \r\na == \"48429\", \"Stephens County\", \r\na == \"48431\", \"Sterling County\", \r\na == \"48433\", \"Stonewall County\", \r\na == \"48435\", \"Sutton County\", \r\na == \"48437\", \"Swisher County\", \r\na == \"48439\", \"Tarrant County\", \r\na == \"48441\", \"Taylor County\", \r\na == \"48443\", \"Terrell County\", \r\na == \"48445\", \"Terry County\", \r\na == \"48447\", \"Throckmorton County\", \r\na == \"48449\", \"Titus County\", \r\na == \"48451\", \"Tom Green County\", \r\na == \"48453\", \"Travis County\", \r\na == \"48455\", \"Trinity County\", \r\na == \"48457\", \"Tyler County\", \r\na == \"48459\", \"Upshur County\", \r\na == \"48461\", \"Upton County\", \r\na == \"48463\", \"Uvalde County\", \r\na == \"48465\", \"Val Verde County\", \r\na == \"48467\", \"Van Zandt County\", \r\na == \"48469\", \"Victoria County\", \r\na == \"48471\", \"Walker County\", \r\na == \"48473\", \"Waller County\", \r\na == \"48475\", \"Ward County\", \r\na == \"48477\", \"Washington County\", \r\na == \"48479\", \"Webb County\", \r\na == \"48481\", \"Wharton County\", \r\na == \"48483\", \"Wheeler County\", \r\na == \"48485\", \"Wichita County\", \r\na == \"48487\", \"Wilbarger County\", \r\na == \"48489\", \"Willacy County\", \r\na == \"48491\", \"Williamson County\", \r\na == \"48493\", \"Wilson County\", \r\na == \"48495\", \"Winkler County\", \r\na == \"48497\", \"Wise County\", \r\na == \"48499\", \"Wood County\", \r\na == \"48501\", \"Yoakum County\", \r\na == \"48503\", \"Young County\", \r\na == \"48505\", \"Zapata County\", \r\na == \"48507\", \"Zavala County\", \r\na == \"49001\", \"Beaver County\", \r\na == \"49003\", \"Box Elder County\", \r\na == \"49005\", \"Cache County\", \r\na == \"49007\", \"Carbon County\", \r\na == \"49009\", \"Daggett County\", \r\na == \"49011\", \"Davis County\", \r\na == \"49013\", \"Duchesne County\", \r\na == \"49015\", \"Emery County\", \r\na == \"49017\", \"Garfield County\", \r\na == \"49019\", \"Grand County\", \r\na == \"49021\", \"Iron County\", \r\na == \"49023\", \"Juab County\", \r\na == \"49025\", \"Kane County\", \r\na == \"49027\", \"Millard County\", \r\na == \"49029\", \"Morgan County\", \r\na == \"49031\", \"Piute County\", \r\na == \"49033\", \"Rich County\", \r\na == \"49035\", \"Salt Lake County\", \r\na == \"49037\", \"San Juan County\", \r\na == \"49039\", \"Sanpete County\", \r\na == \"49041\", \"Sevier County\", \r\na == \"49043\", \"Summit County\", \r\na == \"49045\", \"Tooele County\", \r\na == \"49047\", \"Uintah County\", \r\na == \"49049\", \"Utah County\", \r\na == \"49051\", \"Wasatch County\", \r\na == \"49053\", \"Washington County\", \r\na == \"49055\", \"Wayne County\", \r\na == \"49057\", \"Weber County\", \r\na == \"50001\", \"Addison County\", \r\na == \"50003\", \"Bennington County\", \r\na == \"50005\", \"Caledonia County\", \r\na == \"50007\", \"Chittenden County\", \r\na == \"50009\", \"Essex County\", \r\na == \"50011\", \"Franklin County\", \r\na == \"50013\", \"Grand Isle County\", \r\na == \"50015\", \"Lamoille County\", \r\na == \"50017\", \"Orange County\", \r\na == \"50019\", \"Orleans County\", \r\na == \"50021\", \"Rutland County\", \r\na == \"50023\", \"Washington County\", \r\na == \"50025\", \"Windham County\", \r\na == \"50027\", \"Windsor County\", \r\na == \"51001\", \"Accomack County\", \r\na == \"51003\", \"Albemarle County\", \r\na == \"51005\", \"Alleghany County\", \r\na == \"51007\", \"Amelia County\", \r\na == \"51009\", \"Amherst County\", \r\na == \"51011\", \"Appomattox County\", \r\na == \"51013\", \"Arlington County\", \r\na == \"51015\", \"Augusta County\", \r\na == \"51017\", \"Bath County\", \r\na == \"51019\", \"Bedford County\", \r\na == \"51021\", \"Bland County\", \r\na == \"51023\", \"Botetourt County\", \r\na == \"51025\", \"Brunswick County\", \r\na == \"51027\", \"Buchanan County\", \r\na == \"51029\", \"Buckingham County\", \r\na == \"51031\", \"Campbell County\", \r\na == \"51033\", \"Caroline County\", \r\na == \"51035\", \"Carroll County\", \r\na == \"51036\", \"Charles City County\", \r\na == \"51037\", \"Charlotte County\", \r\na == \"51041\", \"Chesterfield County\", \r\na == \"51043\", \"Clarke County\", \r\na == \"51045\", \"Craig County\", \r\na == \"51047\", \"Culpeper County\", \r\na == \"51049\", \"Cumberland County\", \r\na == \"51051\", \"Dickenson County\", \r\na == \"51053\", \"Dinwiddie County\", \r\na == \"51057\", \"Essex County\", \r\na == \"51059\", \"Fairfax County\", \r\na == \"51061\", \"Fauquier County\", \r\na == \"51063\", \"Floyd County\", \r\na == \"51065\", \"Fluvanna County\", \r\na == \"51067\", \"Franklin County\", \r\na == \"51069\", \"Frederick County\", \r\na == \"51071\", \"Giles County\", \r\na == \"51073\", \"Gloucester County\", \r\na == \"51075\", \"Goochland County\", \r\na == \"51077\", \"Grayson County\", \r\na == \"51079\", \"Greene County\", \r\na == \"51081\", \"Greensville County\", \r\na == \"51083\", \"Halifax County\", \r\na == \"51085\", \"Hanover County\", \r\na == \"51087\", \"Henrico County\", \r\na == \"51089\", \"Henry County\", \r\na == \"51091\", \"Highland County\", \r\na == \"51093\", \"Isle of Wight County\", \r\na == \"51095\", \"James City County\", \r\na == \"51097\", \"King and Queen County\", \r\na == \"51099\", \"King George County\", \r\na == \"51101\", \"King William County\", \r\na == \"51103\", \"Lancaster County\", \r\na == \"51105\", \"Lee County\", \r\na == \"51107\", \"Loudoun County\", \r\na == \"51109\", \"Louisa County\", \r\na == \"51111\", \"Lunenburg County\", \r\na == \"51113\", \"Madison County\", \r\na == \"51115\", \"Mathews County\", \r\na == \"51117\", \"Mecklenburg County\", \r\na == \"51119\", \"Middlesex County\", \r\na == \"51121\", \"Montgomery County\", \r\na == \"51125\", \"Nelson County\", \r\na == \"51127\", \"New Kent County\", \r\na == \"51131\", \"Northampton County\", \r\na == \"51133\", \"Northumberland County\", \r\na == \"51135\", \"Nottoway County\", \r\na == \"51137\", \"Orange County\", \r\na == \"51139\", \"Page County\", \r\na == \"51141\", \"Patrick County\", \r\na == \"51143\", \"Pittsylvania County\", \r\na == \"51145\", \"Powhatan County\", \r\na == \"51147\", \"Prince Edward County\", \r\na == \"51149\", \"Prince George County\", \r\na == \"51153\", \"Prince William County\", \r\na == \"51155\", \"Pulaski County\", \r\na == \"51157\", \"Rappahannock County\", \r\na == \"51159\", \"Richmond County\", \r\na == \"51161\", \"Roanoke County\", \r\na == \"51163\", \"Rockbridge County\", \r\na == \"51165\", \"Rockingham County\", \r\na == \"51167\", \"Russell County\", \r\na == \"51169\", \"Scott County\", \r\na == \"51171\", \"Shenandoah County\", \r\na == \"51173\", \"Smyth County\", \r\na == \"51175\", \"Southampton County\", \r\na == \"51177\", \"Spotsylvania County\", \r\na == \"51179\", \"Stafford County\", \r\na == \"51181\", \"Surry County\", \r\na == \"51183\", \"Sussex County\", \r\na == \"51185\", \"Tazewell County\", \r\na == \"51187\", \"Warren County\", \r\na == \"51191\", \"Washington County\", \r\na == \"51193\", \"Westmoreland County\", \r\na == \"51195\", \"Wise County\", \r\na == \"51197\", \"Wythe County\", \r\na == \"51199\", \"York County\", \r\na == \"51510\", \"Alexandria city\", \r\na == \"51520\", \"Bristol city\", \r\na == \"51530\", \"Buena Vista city\", \r\na == \"51540\", \"Charlottesville city\", \r\na == \"51550\", \"Chesapeake city\", \r\na == \"51570\", \"Colonial Heights city\", \r\na == \"51580\", \"Covington city\", \r\na == \"51590\", \"Danville city\", \r\na == \"51595\", \"Emporia city\", \r\na == \"51600\", \"Fairfax city\", \r\na == \"51610\", \"Falls Church city\", \r\na == \"51620\", \"Franklin city\", \r\na == \"51630\", \"Fredericksburg city\", \r\na == \"51640\", \"Galax city\", \r\na == \"51650\", \"Hampton city\", \r\na == \"51660\", \"Harrisonburg city\", \r\na == \"51670\", \"Hopewell city\", \r\na == \"51678\", \"Lexington city\", \r\na == \"51680\", \"Lynchburg city\", \r\na == \"51683\", \"Manassas city\", \r\na == \"51685\", \"Manassas Park city\", \r\na == \"51690\", \"Martinsville city\", \r\na == \"51700\", \"Newport News city\", \r\na == \"51710\", \"Norfolk city\", \r\na == \"51720\", \"Norton city\", \r\na == \"51730\", \"Petersburg city\", \r\na == \"51735\", \"Poquoson city\", \r\na == \"51740\", \"Portsmouth city\", \r\na == \"51750\", \"Radford city\", \r\na == \"51760\", \"Richmond city\", \r\na == \"51770\", \"Roanoke city\", \r\na == \"51775\", \"Salem city\", \r\na == \"51790\", \"Staunton city\", \r\na == \"51800\", \"Suffolk city\", \r\na == \"51810\", \"Virginia Beach city\", \r\na == \"51820\", \"Waynesboro city\", \r\na == \"51830\", \"Williamsburg city\", \r\na == \"51840\", \"Winchester city\", \r\na == \"53001\", \"Adams County\", \r\na == \"53003\", \"Asotin County\", \r\na == \"53005\", \"Benton County\", \r\na == \"53007\", \"Chelan County\", \r\na == \"53009\", \"Clallam County\", \r\na == \"53011\", \"Clark County\", \r\na == \"53013\", \"Columbia County\", \r\na == \"53015\", \"Cowlitz County\", \r\na == \"53017\", \"Douglas County\", \r\na == \"53019\", \"Ferry County\", \r\na == \"53021\", \"Franklin County\", \r\na == \"53023\", \"Garfield County\", \r\na == \"53025\", \"Grant County\", \r\na == \"53027\", \"Grays Harbor County\", \r\na == \"53029\", \"Island County\", \r\na == \"53031\", \"Jefferson County\", \r\na == \"53033\", \"King County\", \r\na == \"53035\", \"Kitsap County\", \r\na == \"53037\", \"Kittitas County\", \r\na == \"53039\", \"Klickitat County\", \r\na == \"53041\", \"Lewis County\", \r\na == \"53043\", \"Lincoln County\", \r\na == \"53045\", \"Mason County\", \r\na == \"53047\", \"Okanogan County\", \r\na == \"53049\", \"Pacific County\", \r\na == \"53051\", \"Pend Oreille County\", \r\na == \"53053\", \"Pierce County\", \r\na == \"53055\", \"San Juan County\", \r\na == \"53057\", \"Skagit County\", \r\na == \"53059\", \"Skamania County\", \r\na == \"53061\", \"Snohomish County\", \r\na == \"53063\", \"Spokane County\", \r\na == \"53065\", \"Stevens County\", \r\na == \"53067\", \"Thurston County\", \r\na == \"53069\", \"Wahkiakum County\", \r\na == \"53071\", \"Walla Walla County\", \r\na == \"53073\", \"Whatcom County\", \r\na == \"53075\", \"Whitman County\", \r\na == \"53077\", \"Yakima County\", \r\na == \"54001\", \"Barbour County\", \r\na == \"54003\", \"Berkeley County\", \r\na == \"54005\", \"Boone County\", \r\na == \"54007\", \"Braxton County\", \r\na == \"54009\", \"Brooke County\", \r\na == \"54011\", \"Cabell County\", \r\na == \"54013\", \"Calhoun County\", \r\na == \"54015\", \"Clay County\", \r\na == \"54017\", \"Doddridge County\", \r\na == \"54019\", \"Fayette County\", \r\na == \"54021\", \"Gilmer County\", \r\na == \"54023\", \"Grant County\", \r\na == \"54025\", \"Greenbrier County\", \r\na == \"54027\", \"Hampshire County\", \r\na == \"54029\", \"Hancock County\", \r\na == \"54031\", \"Hardy County\", \r\na == \"54033\", \"Harrison County\", \r\na == \"54035\", \"Jackson County\", \r\na == \"54037\", \"Jefferson County\", \r\na == \"54039\", \"Kanawha County\", \r\na == \"54041\", \"Lewis County\", \r\na == \"54043\", \"Lincoln County\", \r\na == \"54045\", \"Logan County\", \r\na == \"54047\", \"McDowell County\", \r\na == \"54049\", \"Marion County\", \r\na == \"54051\", \"Marshall County\", \r\na == \"54053\", \"Mason County\", \r\na == \"54055\", \"Mercer County\", \r\na == \"54057\", \"Mineral County\", \r\na == \"54059\", \"Mingo County\", \r\na == \"54061\", \"Monongalia County\", \r\na == \"54063\", \"Monroe County\", \r\na == \"54065\", \"Morgan County\", \r\na == \"54067\", \"Nicholas County\", \r\na == \"54069\", \"Ohio County\", \r\na == \"54071\", \"Pendleton County\", \r\na == \"54073\", \"Pleasants County\", \r\na == \"54075\", \"Pocahontas County\", \r\na == \"54077\", \"Preston County\", \r\na == \"54079\", \"Putnam County\", \r\na == \"54081\", \"Raleigh County\", \r\na == \"54083\", \"Randolph County\", \r\na == \"54085\", \"Ritchie County\", \r\na == \"54087\", \"Roane County\", \r\na == \"54089\", \"Summers County\", \r\na == \"54091\", \"Taylor County\", \r\na == \"54093\", \"Tucker County\", \r\na == \"54095\", \"Tyler County\", \r\na == \"54097\", \"Upshur County\", \r\na == \"54099\", \"Wayne County\", \r\na == \"54101\", \"Webster County\", \r\na == \"54103\", \"Wetzel County\", \r\na == \"54105\", \"Wirt County\", \r\na == \"54107\", \"Wood County\", \r\na == \"54109\", \"Wyoming County\", \r\na == \"55001\", \"Adams County\", \r\na == \"55003\", \"Ashland County\", \r\na == \"55005\", \"Barron County\", \r\na == \"55007\", \"Bayfield County\", \r\na == \"55009\", \"Brown County\", \r\na == \"55011\", \"Buffalo County\", \r\na == \"55013\", \"Burnett County\", \r\na == \"55015\", \"Calumet County\", \r\na == \"55017\", \"Chippewa County\", \r\na == \"55019\", \"Clark County\", \r\na == \"55021\", \"Columbia County\", \r\na == \"55023\", \"Crawford County\", \r\na == \"55025\", \"Dane County\", \r\na == \"55027\", \"Dodge County\", \r\na == \"55029\", \"Door County\", \r\na == \"55031\", \"Douglas County\", \r\na == \"55033\", \"Dunn County\", \r\na == \"55035\", \"Eau Claire County\", \r\na == \"55037\", \"Florence County\", \r\na == \"55039\", \"Fond du Lac County\", \r\na == \"55041\", \"Forest County\", \r\na == \"55043\", \"Grant County\", \r\na == \"55045\", \"Green County\", \r\na == \"55047\", \"Green Lake County\", \r\na == \"55049\", \"Iowa County\", \r\na == \"55051\", \"Iron County\", \r\na == \"55053\", \"Jackson County\", \r\na == \"55055\", \"Jefferson County\", \r\na == \"55057\", \"Juneau County\", \r\na == \"55059\", \"Kenosha County\", \r\na == \"55061\", \"Kewaunee County\", \r\na == \"55063\", \"La Crosse County\", \r\na == \"55065\", \"Lafayette County\", \r\na == \"55067\", \"Langlade County\", \r\na == \"55069\", \"Lincoln County\", \r\na == \"55071\", \"Manitowoc County\", \r\na == \"55073\", \"Marathon County\", \r\na == \"55075\", \"Marinette County\", \r\na == \"55077\", \"Marquette County\", \r\na == \"55078\", \"Menominee County\", \r\na == \"55079\", \"Milwaukee County\", \r\na == \"55081\", \"Monroe County\", \r\na == \"55083\", \"Oconto County\", \r\na == \"55085\", \"Oneida County\", \r\na == \"55087\", \"Outagamie County\", \r\na == \"55089\", \"Ozaukee County\", \r\na == \"55091\", \"Pepin County\", \r\na == \"55093\", \"Pierce County\", \r\na == \"55095\", \"Polk County\", \r\na == \"55097\", \"Portage County\", \r\na == \"55099\", \"Price County\", \r\na == \"55101\", \"Racine County\", \r\na == \"55103\", \"Richland County\", \r\na == \"55105\", \"Rock County\", \r\na == \"55107\", \"Rusk County\", \r\na == \"55109\", \"St. Croix County\", \r\na == \"55111\", \"Sauk County\", \r\na == \"55113\", \"Sawyer County\", \r\na == \"55115\", \"Shawano County\", \r\na == \"55117\", \"Sheboygan County\", \r\na == \"55119\", \"Taylor County\", \r\na == \"55121\", \"Trempealeau County\", \r\na == \"55123\", \"Vernon County\", \r\na == \"55125\", \"Vilas County\", \r\na == \"55127\", \"Walworth County\", \r\na == \"55129\", \"Washburn County\", \r\na == \"55131\", \"Washington County\", \r\na == \"55133\", \"Waukesha County\", \r\na == \"55135\", \"Waupaca County\", \r\na == \"55137\", \"Waushara County\", \r\na == \"55139\", \"Winnebago County\", \r\na == \"55141\", \"Wood County\", \r\na == \"56001\", \"Albany County\", \r\na == \"56003\", \"Big Horn County\", \r\na == \"56005\", \"Campbell County\", \r\na == \"56007\", \"Carbon County\", \r\na == \"56009\", \"Converse County\", \r\na == \"56011\", \"Crook County\", \r\na == \"56013\", \"Fremont County\", \r\na == \"56015\", \"Goshen County\", \r\na == \"56017\", \"Hot Springs County\", \r\na == \"56019\", \"Johnson County\", \r\na == \"56021\", \"Laramie County\", \r\na == \"56023\", \"Lincoln County\", \r\na == \"56025\", \"Natrona County\", \r\na == \"56027\", \"Niobrara County\", \r\na == \"56029\", \"Park County\", \r\na == \"56031\", \"Platte County\", \r\na == \"56033\", \"Sheridan County\", \r\na == \"56035\", \"Sublette County\", \r\na == \"56037\", \"Sweetwater County\", \r\na == \"56039\", \"Teton County\", \r\na == \"56041\", \"Uinta County\", \r\na == \"56043\", \"Washakie County\", \r\na == \"56045\", \"Weston County\", \r\na == \"60010\", \"Eastern District\", \r\na == \"60020\", \"Manu'a District\", \r\na == \"60030\", \"Rose Island\", \r\na == \"60040\", \"Swains Island\", \r\na == \"60050\", \"Western District\", \r\na == \"66010\", \"Guam\", \r\na == \"69085\", \"Northern Islands Municipality\", \r\na == \"69100\", \"Rota Municipality\", \r\na == \"69110\", \"Saipan Municipality\", \r\na == \"69120\", \"Tinian Municipality\", \r\na == \"72001\", \"Adjuntas Municipio\", \r\na == \"72003\", \"Aguada Municipio\", \r\na == \"72005\", \"Aguadilla Municipio\", \r\na == \"72007\", \"Aguas Buenas Municipio\", \r\na == \"72009\", \"Aibonito Municipio\", \r\na == \"72011\", \"Añasco Municipio\", \r\na == \"72013\", \"Arecibo Municipio\", \r\na == \"72015\", \"Arroyo Municipio\", \r\na == \"72017\", \"Barceloneta Municipio\", \r\na == \"72019\", \"Barranquitas Municipio\", \r\na == \"72021\", \"Bayamón Municipio\", \r\na == \"72023\", \"Cabo Rojo Municipio\", \r\na == \"72025\", \"Caguas Municipio\", \r\na == \"72027\", \"Camuy Municipio\", \r\na == \"72029\", \"Canóvanas Municipio\", \r\na == \"72031\", \"Carolina Municipio\", \r\na == \"72033\", \"Cataño Municipio\", \r\na == \"72035\", \"Cayey Municipio\", \r\na == \"72037\", \"Ceiba Municipio\", \r\na == \"72039\", \"Ciales Municipio\", \r\na == \"72041\", \"Cidra Municipio\", \r\na == \"72043\", \"Coamo Municipio\", \r\na == \"72045\", \"Comerío Municipio\", \r\na == \"72047\", \"Corozal Municipio\", \r\na == \"72049\", \"Culebra Municipio\", \r\na == \"72051\", \"Dorado Municipio\", \r\na == \"72053\", \"Fajardo Municipio\", \r\na == \"72054\", \"Florida Municipio\", \r\na == \"72055\", \"Guánica Municipio\", \r\na == \"72057\", \"Guayama Municipio\", \r\na == \"72059\", \"Guayanilla Municipio\", \r\na == \"72061\", \"Guaynabo Municipio\", \r\na == \"72063\", \"Gurabo Municipio\", \r\na == \"72065\", \"Hatillo Municipio\", \r\na == \"72067\", \"Hormigueros Municipio\", \r\na == \"72069\", \"Humacao Municipio\", \r\na == \"72071\", \"Isabela Municipio\", \r\na == \"72073\", \"Jayuya Municipio\", \r\na == \"72075\", \"Juana Díaz Municipio\", \r\na == \"72077\", \"Juncos Municipio\", \r\na == \"72079\", \"Lajas Municipio\", \r\na == \"72081\", \"Lares Municipio\", \r\na == \"72083\", \"Las Marías Municipio\", \r\na == \"72085\", \"Las Piedras Municipio\", \r\na == \"72087\", \"Loíza Municipio\", \r\na == \"72089\", \"Luquillo Municipio\", \r\na == \"72091\", \"Manatí Municipio\", \r\na == \"72093\", \"Maricao Municipio\", \r\na == \"72095\", \"Maunabo Municipio\", \r\na == \"72097\", \"Mayagüez Municipio\", \r\na == \"72099\", \"Moca Municipio\", \r\na == \"72101\", \"Morovis Municipio\", \r\na == \"72103\", \"Naguabo Municipio\", \r\na == \"72105\", \"Naranjito Municipio\", \r\na == \"72107\", \"Orocovis Municipio\", \r\na == \"72109\", \"Patillas Municipio\", \r\na == \"72111\", \"Peñuelas Municipio\", \r\na == \"72113\", \"Ponce Municipio\", \r\na == \"72115\", \"Quebradillas Municipio\", \r\na == \"72117\", \"Rincón Municipio\", \r\na == \"72119\", \"Río Grande Municipio\", \r\na == \"72121\", \"Sabana Grande Municipio\", \r\na == \"72123\", \"Salinas Municipio\", \r\na == \"72125\", \"San Germán Municipio\", \r\na == \"72127\", \"San Juan Municipio\", \r\na == \"72129\", \"San Lorenzo Municipio\", \r\na == \"72131\", \"San Sebastián Municipio\", \r\na == \"72133\", \"Santa Isabel Municipio\", \r\na == \"72135\", \"Toa Alta Municipio\", \r\na == \"72137\", \"Toa Baja Municipio\", \r\na == \"72139\", \"Trujillo Alto Municipio\", \r\na == \"72141\", \"Utuado Municipio\", \r\na == \"72143\", \"Vega Alta Municipio\", \r\na == \"72145\", \"Vega Baja Municipio\", \r\na == \"72147\", \"Vieques Municipio\", \r\na == \"72149\", \"Villalba Municipio\", \r\na == \"72151\", \"Yabucoa Municipio\", \r\na == \"72153\", \"Yauco Municipio\", \r\na == \"78010\", \"St. Croix Island\", \r\na == \"78020\", \"St. John Island\", \r\na == \"78030\", \"St. Thomas Island\", \r\n\"Unknown\")",
+                  "name": "expr3",
+                  "returnType": "String"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Address",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature[\"PROP_ADDR\"])\nvar a = Proper($feature[\"PROP_ADDR\"])\n\nIif(e == true, \"Unknown\", a)",
+                  "name": "expr4",
+                  "returnType": "String"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "City",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature[\"PROP_CITY\"])\nvar c = Proper($feature[\"PROP_CITY\"])\n\nIif(e == true, \"Unknown\", c)",
+                  "name": "expr5",
+                  "returnType": "String"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Zip code",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature[\"PROP_ZIP\"])\nvar z = Proper($feature[\"PROP_ZIP\"])\n\nIif(e == true, \"Unknown\", z)",
+                  "name": "expr6",
+                  "returnType": "String"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Height (meters)",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature.HEIGHT)\nvar h = $feature.HEIGHT\n\nIif(e == true, -99999, h)",
+                  "name": "expr7",
+                  "returnType": "Numeric"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Square meters",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature.SQMETERS)\nvar m = $feature.SQMETERS\n\nIif(e == true, -99999, m)",
+                  "name": "expr8",
+                  "returnType": "Numeric"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Square feet",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature.SQFEET)\nvar m = $feature.SQFEET\n\nIif(e == true, -99999, m)",
+                  "name": "expr9",
+                  "returnType": "Numeric"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Height (feet)",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature.HEIGHT)\nvar m = $feature.HEIGHT * 3.28084\n\nIif(e == true, -99999, m)",
+                  "name": "expr10",
+                  "returnType": "Numeric"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Secondary occupancy",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature[\"SEC_OCC\"])\nvar p = $feature[\"SEC_OCC\"]\n\nIif(e == true, \"Unknown Occupancy\", p)",
+                  "name": "expr11",
+                  "returnType": "String"
+               }, {
+                  "type": "CIMExpressionInfo",
+                  "title": "Outbuilding or non-primary structure",
+                  "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature.OUTBLDG)\nvar p = $feature.OUTBLDG\n\nIif(e == true, \"Unknown\", p)",
+                  "name": "expr12",
+                  "returnType": "String"
+               }
+            ],
+            "mediaInfos": [{
+                  "type": "CIMTextMediaInfo",
+                  "refreshRateUnit": "esriTimeUnitsSeconds",
+                  "rowSpan": 1,
+                  "columnSpan": 1,
+                  "text": "<div style='text-align: center;'><font size='4'><b>{expression/expr0}</b></font><br /><br /></div><font size='3'>County: {expression/expr3}\u00A0<br />State:\u00A0{PROP_ST}<br />Census Tract:\u00A0{CENSUSCODE}<br /><br />Height:\u00A0{expression/expr10} feet<br />Area: {expression/expr9} square feet<br />USNG Coordinates:\u00A0{USNG}</font>"
+               }
+            ],
+            "gridLayout": {
+               "type": "CIMPopupLayout",
+               "columnWidths": [
+                  100
+               ],
+               "borderWidth": 0,
+               "borderColor": {
+                  "type": "CIMRGBColor",
+                  "values": [
+                     0,
+                     0,
+                     0,
+                     100
+                  ]
+               }
+            },
+            "fieldDescriptions": [{
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Building ID",
+                  "fieldName": "BUILD_ID",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Census tract identifier",
+                  "fieldName": "CENSUSCODE"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "County Federal Information Processing Standards (FIPS) code",
+                  "fieldName": "FIPS"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Height (meters)",
+                  "fieldName": "HEIGHT",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Highest elevation (in meters) of the ground adjacent to the structure",
+                  "fieldName": "H_ADJ_ELEV",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 2,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Image date",
+                  "fieldName": "IMAGE_DATE",
+                  "numberFormat": {
+                     "type": "CIMDateFormat",
+                     "format": "M/d/yyyy"
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Image name",
+                  "fieldName": "IMAGE_NAME"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Latitude",
+                  "fieldName": "LATITUDE",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 6
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Longitude",
+                  "fieldName": "LONGITUDE",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 6
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Lowest elevation (in meters) of the ground adjacent to the structure",
+                  "fieldName": "L_ADJ_ELEV",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 2,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Object ID",
+                  "fieldName": "OBJECTID",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Building occupancy classification",
+                  "fieldName": "OCC_CLS"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Outbuilding or non-primary structure",
+                  "fieldName": "OUTBLDG"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Primary occupancy",
+                  "fieldName": "PRIM_OCC"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Production date",
+                  "fieldName": "PROD_DATE",
+                  "numberFormat": {
+                     "type": "CIMDateFormat",
+                     "format": "M/d/yyyy"
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Address",
+                  "fieldName": "PROP_ADDR"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "City",
+                  "fieldName": "PROP_CITY"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "State",
+                  "fieldName": "PROP_ST"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Zip code",
+                  "fieldName": "PROP_ZIP"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Remarks",
+                  "fieldName": "REMARKS"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Secondary occupancy",
+                  "fieldName": "SEC_OCC"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Source",
+                  "fieldName": "SOURCE"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Square feet",
+                  "fieldName": "SQFEET",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Square meters",
+                  "fieldName": "SQMETERS",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "State Federal Information Processing Standards (FIPS) code",
+                  "fieldName": "STATE_FIPS"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Shape area",
+                  "fieldName": "Shape__Area",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 2,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Shape length",
+                  "fieldName": "Shape__Length",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 2,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "United States National Grid  (USNG) coordinates",
+                  "fieldName": "USNG"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Universally Unique Identifier (UUID)",
+                  "fieldName": "UUID"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "alias": "Methodology used to validate building outline",
+                  "fieldName": "VAL_METHOD"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr0"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr1"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr10",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr11"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr12"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr3"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr4"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr5"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr6"
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr7",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr8",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0,
+                     "useSeparator": true
+                  }
+               }, {
+                  "type": "CIMPopupFieldDescription",
+                  "fieldName": "expression/expr9",
+                  "numberFormat": {
+                     "type": "CIMNumericFormat",
+                     "alignmentOption": "esriAlignLeft",
+                     "alignmentWidth": 12,
+                     "roundingOption": "esriRoundNumberOfDecimals",
+                     "roundingValue": 0,
+                     "useSeparator": true
+                  }
+               }
+            ]
+         },
+         "showPopups": true,
+         "serviceLayerID": -1,
+         "refreshRate": -1,
+         "refreshRateUnit": "esriTimeUnitsSeconds",
+         "blendingMode": "Alpha",
+         "allowDrapingOnIntegratedMesh": true,
+         "featureElevationExpression": "0",
+         "featureTable": {
+            "type": "CIMFeatureTable",
+            "displayField": "IMAGE_NAME",
+            "editable": true,
+            "dataConnection": {
+               "type": "CIMStandardDataConnection",
+               "workspaceConnectionString": "URL=https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/USA_Structures_View/FeatureServer",
+               "workspaceFactory": "FeatureService",
+               "dataset": "0",
+               "datasetType": "esriDTFeatureClass"
+            },
+            "studyAreaSpatialRel": "esriSpatialRelUndefined",
+            "searchOrder": "esriSearchOrderSpatial"
+         },
+         "featureTemplates": [{
+               "type": "CIMRowTemplate",
+               "name": "New Feature",
+               "defaultValues": {
+                  "type": "PropertySet",
+                  "propertySetItems": [
+                     "BUILD_ID",
+                     null,
+                     "OCC_CLS",
+                     null,
+                     "PRIM_OCC",
+                     null,
+                     "SEC_OCC",
+                     null,
+                     "PROP_ADDR",
+                     null,
+                     "PROP_CITY",
+                     null,
+                     "PROP_ST",
+                     null,
+                     "PROP_ZIP",
+                     null,
+                     "OUTBLDG",
+                     null,
+                     "HEIGHT",
+                     null,
+                     "SQMETERS",
+                     null,
+                     "SQFEET",
+                     null,
+                     "H_ADJ_ELEV",
+                     null,
+                     "L_ADJ_ELEV",
+                     null,
+                     "FIPS",
+                     null,
+                     "CENSUSCODE",
+                     null,
+                     "PROD_DATE",
+                     null,
+                     "SOURCE",
+                     null,
+                     "USNG",
+                     null,
+                     "LONGITUDE",
+                     null,
+                     "LATITUDE",
+                     null,
+                     "IMAGE_NAME",
+                     null,
+                     "IMAGE_DATE",
+                     null,
+                     "VAL_METHOD",
+                     null,
+                     "REMARKS",
+                     null,
+                     "UUID",
+                     null,
+                     "STATE_FIPS",
+                     null
+                  ]
+               }
+            }
+         ],
+         "htmlPopupEnabled": true,
+         "selectable": true,
+         "featureCacheType": "Session",
+         "displayFiltersType": "ByScale",
+         "featureBlendingMode": "Alpha",
+         "labelClasses": [{
+               "type": "CIMLabelClass",
+               "expressionTitle": "Custom",
+               "expression": "$feature.IMAGE_NAME",
+               "expressionEngine": "Arcade",
+               "featuresToLabel": "AllVisibleFeatures",
+               "maplexLabelPlacementProperties": {
+                  "type": "CIMMaplexLabelPlacementProperties",
+                  "featureType": "Polygon",
+                  "avoidPolygonHoles": true,
+                  "canOverrunFeature": true,
+                  "canPlaceLabelOutsidePolygon": true,
+                  "canRemoveOverlappingLabel": true,
+                  "canStackLabel": true,
+                  "connectionType": "Unambiguous",
+                  "constrainOffset": "NoConstraint",
+                  "contourAlignmentType": "Page",
+                  "contourLadderType": "Straight",
+                  "contourMaximumAngle": 90,
+                  "enableConnection": true,
+                  "featureWeight": 0,
+                  "fontHeightReductionLimit": 4,
+                  "fontHeightReductionStep": 0.5,
+                  "fontWidthReductionLimit": 90,
+                  "fontWidthReductionStep": 5,
+                  "graticuleAlignmentType": "Straight",
+                  "keyNumberGroupName": "Default",
+                  "labelBuffer": 15,
+                  "labelLargestPolygon": true,
+                  "labelPriority": -1,
+                  "labelStackingProperties": {
+                     "type": "CIMMaplexLabelStackingProperties",
+                     "stackAlignment": "ChooseBest",
+                     "maximumNumberOfLines": 3,
+                     "minimumNumberOfCharsPerLine": 3,
+                     "maximumNumberOfCharsPerLine": 24,
+                     "separators": [{
+                           "type": "CIMMaplexStackingSeparator",
+                           "separator": " ",
+                           "splitAfter": true
+                        }, {
+                           "type": "CIMMaplexStackingSeparator",
+                           "separator": ",",
+                           "visible": true,
+                           "splitAfter": true
+                        }
+                     ],
+                     "trimStackingSeparators": true
+                  },
+                  "lineFeatureType": "General",
+                  "linePlacementMethod": "OffsetCurvedFromLine",
+                  "maximumLabelOverrun": 80,
+                  "maximumLabelOverrunUnit": "Point",
+                  "minimumFeatureSizeUnit": "Map",
+                  "multiPartOption": "OneLabelPerPart",
+                  "offsetAlongLineProperties": {
+                     "type": "CIMMaplexOffsetAlongLineProperties",
+                     "placementMethod": "BestPositionAlongLine",
+                     "labelAnchorPoint": "CenterOfLabel",
+                     "distanceUnit": "Percentage",
+                     "useLineDirection": true
+                  },
+                  "pointExternalZonePriorities": {
+                     "type": "CIMMaplexExternalZonePriorities",
+                     "aboveLeft": 4,
+                     "aboveCenter": 2,
+                     "aboveRight": 1,
+                     "centerRight": 3,
+                     "belowRight": 5,
+                     "belowCenter": 7,
+                     "belowLeft": 8,
+                     "centerLeft": 6
+                  },
+                  "pointPlacementMethod": "AroundPoint",
+                  "polygonAnchorPointType": "GeometricCenter",
+                  "polygonBoundaryWeight": 0,
+                  "polygonExternalZones": {
+                     "type": "CIMMaplexExternalZonePriorities",
+                     "aboveLeft": 4,
+                     "aboveCenter": 2,
+                     "aboveRight": 1,
+                     "centerRight": 3,
+                     "belowRight": 5,
+                     "belowCenter": 7,
+                     "belowLeft": 8,
+                     "centerLeft": 6
+                  },
+                  "polygonFeatureType": "General",
+                  "polygonInternalZones": {
+                     "type": "CIMMaplexInternalZonePriorities",
+                     "center": 1
+                  },
+                  "polygonPlacementMethod": "HorizontalInPolygon",
+                  "primaryOffset": 1,
+                  "primaryOffsetUnit": "Point",
+                  "removeExtraWhiteSpace": true,
+                  "repetitionIntervalUnit": "Point",
+                  "rotationProperties": {
+                     "type": "CIMMaplexRotationProperties",
+                     "rotationType": "Arithmetic",
+                     "alignmentType": "Straight"
+                  },
+                  "secondaryOffset": 100,
+                  "strategyPriorities": {
+                     "type": "CIMMaplexStrategyPriorities",
+                     "stacking": 1,
+                     "overrun": 2,
+                     "fontCompression": 3,
+                     "fontReduction": 4,
+                     "abbreviation": 5
+                  },
+                  "thinningDistanceUnit": "Point",
+                  "truncationMarkerCharacter": ".",
+                  "truncationMinimumLength": 1,
+                  "truncationPreferredCharacters": "aeiou",
+                  "truncationExcludedCharacters": "0123456789",
+                  "polygonAnchorPointPerimeterInsetUnit": "Point"
+               },
+               "name": "Class 1",
+               "priority": -1,
+               "standardLabelPlacementProperties": {
+                  "type": "CIMStandardLabelPlacementProperties",
+                  "featureType": "Line",
+                  "featureWeight": "None",
+                  "labelWeight": "High",
+                  "numLabelsOption": "OneLabelPerName",
+                  "lineLabelPosition": {
+                     "type": "CIMStandardLineLabelPosition",
+                     "above": true,
+                     "inLine": true,
+                     "parallel": true
+                  },
+                  "lineLabelPriorities": {
+                     "type": "CIMStandardLineLabelPriorities",
+                     "aboveStart": 3,
+                     "aboveAlong": 3,
+                     "aboveEnd": 3,
+                     "centerStart": 3,
+                     "centerAlong": 3,
+                     "centerEnd": 3,
+                     "belowStart": 3,
+                     "belowAlong": 3,
+                     "belowEnd": 3
+                  },
+                  "pointPlacementMethod": "AroundPoint",
+                  "pointPlacementPriorities": {
+                     "type": "CIMStandardPointPlacementPriorities",
+                     "aboveLeft": 2,
+                     "aboveCenter": 2,
+                     "aboveRight": 1,
+                     "centerLeft": 3,
+                     "centerRight": 2,
+                     "belowLeft": 3,
+                     "belowCenter": 3,
+                     "belowRight": 2
+                  },
+                  "rotationType": "Arithmetic",
+                  "polygonPlacementMethod": "AlwaysHorizontal"
+               },
+               "textSymbol": {
+                  "type": "CIMSymbolReference",
+                  "symbol": {
+                     "type": "CIMTextSymbol",
+                     "blockProgression": "TTB",
+                     "depth3D": 1,
+                     "extrapolateBaselines": true,
+                     "fontEffects": "Normal",
+                     "fontEncoding": "Unicode",
+                     "fontFamilyName": "Tahoma",
+                     "fontStyleName": "Regular",
+                     "fontType": "Unspecified",
+                     "haloSize": 1,
+                     "height": 10,
+                     "hinting": "Default",
+                     "horizontalAlignment": "Left",
+                     "kerning": true,
+                     "letterWidth": 100,
+                     "ligatures": true,
+                     "lineGapType": "ExtraLeading",
+                     "symbol": {
+                        "type": "CIMPolygonSymbol",
+                        "symbolLayers": [{
+                              "type": "CIMSolidFill",
+                              "enable": true,
+                              "color": {
+                                 "type": "CIMRGBColor",
+                                 "values": [
+                                    0,
+                                    0,
+                                    0,
+                                    100
+                                 ]
+                              }
+                           }
+                        ]
+                     },
+                     "textCase": "Normal",
+                     "textDirection": "LTR",
+                     "verticalAlignment": "Bottom",
+                     "verticalGlyphOrientation": "Right",
+                     "wordSpacing": 100,
+                     "billboardMode3D": "FaceNearPlane"
+                  }
+               },
+               "useCodedValue": true,
+               "visibility": true,
+               "iD": -1
+            }
+         ],
+         "renderer": {
+            "type": "CIMUniqueValueRenderer",
+            "visualVariables": [{
+                  "type": "CIMSizeVisualVariable",
+                  "randomMax": 1,
+                  "maxSize": 1,
+                  "maxValue": 1,
+                  "valueRepresentation": "Radius",
+                  "variableType": "Graduated",
+                  "valueShape": "Unknown",
+                  "axis": "HeightAxis",
+                  "target": "outline",
+                  "normalizationType": "Nothing",
+                  "sizeValues": [
+                     1.5,
+                     0.75,
+                     0.375,
+                     0
+                  ],
+                  "dataValues": [
+                     340,
+                     1061,
+                     4246,
+                     8491
+                  ],
+                  "valueExpressionInfo": {
+                     "type": "CIMExpressionInfo",
+                     "title": "Custom",
+                     "expression": "$view.scale",
+                     "returnType": "Default"
+                  }
+               }
+            ],
+            "defaultLabel": "Other",
+            "defaultSymbol": {
+               "type": "CIMSymbolReference",
+               "symbol": {
+                  "type": "CIMPolygonSymbol",
+                  "symbolLayers": [{
+                        "type": "CIMSolidStroke",
+                        "enable": true,
+                        "colorLocked": true,
+                        "capStyle": "Butt",
+                        "joinStyle": "Round",
+                        "lineStyle3D": "Strip",
+                        "miterLimit": 10,
+                        "width": 0.75,
+                        "color": {
+                           "type": "CIMRGBColor",
+                           "values": [
+                              153,
+                              153,
+                              153,
+                              25.098039627075195
+                           ]
+                        }
+                     }, {
+                        "type": "CIMSolidFill",
+                        "enable": true,
+                        "color": {
+                           "type": "CIMRGBColor",
+                           "values": [
+                              183,
+                              129,
+                              74,
+                              100
+                           ]
+                        }
+                     }
+                  ]
+               }
+            },
+            "defaultSymbolPatch": "Default",
+            "groups": [{
+                  "type": "CIMUniqueValueGroup",
+                  "classes": [{
+                        "type": "CIMUniqueValueClass",
+                        "label": "Government",
+                        "patch": "Default",
+                        "symbol": {
+                           "type": "CIMSymbolReference",
+                           "symbol": {
+                              "type": "CIMPolygonSymbol",
+                              "symbolLayers": [{
+                                    "type": "CIMSolidStroke",
+                                    "enable": true,
+                                    "colorLocked": true,
+                                    "capStyle": "Butt",
+                                    "joinStyle": "Round",
+                                    "lineStyle3D": "Strip",
+                                    "miterLimit": 10,
+                                    "width": 0.75,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          153,
+                                          153,
+                                          153,
+                                          25.098039627075195
+                                       ]
+                                    }
+                                 }, {
+                                    "type": "CIMSolidFill",
+                                    "enable": true,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          20,
+                                          158,
+                                          206,
+                                          100
+                                       ]
+                                    }
+                                 }
+                              ]
+                           }
+                        },
+                        "values": [{
+                              "type": "CIMUniqueValue",
+                              "fieldValues": [
+                                 "Government"
+                              ]
+                           }
+                        ],
+                        "visible": true
+                     }, {
+                        "type": "CIMUniqueValueClass",
+                        "label": "Commercial",
+                        "patch": "Default",
+                        "symbol": {
+                           "type": "CIMSymbolReference",
+                           "symbol": {
+                              "type": "CIMPolygonSymbol",
+                              "symbolLayers": [{
+                                    "type": "CIMSolidStroke",
+                                    "enable": true,
+                                    "colorLocked": true,
+                                    "capStyle": "Butt",
+                                    "joinStyle": "Round",
+                                    "lineStyle3D": "Strip",
+                                    "miterLimit": 10,
+                                    "width": 0.75,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          153,
+                                          153,
+                                          153,
+                                          25.098039627075195
+                                       ]
+                                    }
+                                 }, {
+                                    "type": "CIMSolidFill",
+                                    "enable": true,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          255,
+                                          127,
+                                          127,
+                                          100
+                                       ]
+                                    }
+                                 }
+                              ]
+                           }
+                        },
+                        "values": [{
+                              "type": "CIMUniqueValue",
+                              "fieldValues": [
+                                 "Commercial"
+                              ]
+                           }
+                        ],
+                        "visible": true
+                     }, {
+                        "type": "CIMUniqueValueClass",
+                        "label": "Education",
+                        "patch": "Default",
+                        "symbol": {
+                           "type": "CIMSymbolReference",
+                           "symbol": {
+                              "type": "CIMPolygonSymbol",
+                              "symbolLayers": [{
+                                    "type": "CIMSolidStroke",
+                                    "enable": true,
+                                    "colorLocked": true,
+                                    "capStyle": "Butt",
+                                    "joinStyle": "Round",
+                                    "lineStyle3D": "Strip",
+                                    "miterLimit": 10,
+                                    "width": 0.75,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          153,
+                                          153,
+                                          153,
+                                          25.098039627075195
+                                       ]
+                                    }
+                                 }, {
+                                    "type": "CIMSolidFill",
+                                    "enable": true,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          252,
+                                          146,
+                                          31,
+                                          100
+                                       ]
+                                    }
+                                 }
+                              ]
+                           }
+                        },
+                        "values": [{
+                              "type": "CIMUniqueValue",
+                              "fieldValues": [
+                                 "Education"
+                              ]
+                           }
+                        ],
+                        "visible": true
+                     }, {
+                        "type": "CIMUniqueValueClass",
+                        "label": "Residential",
+                        "patch": "Default",
+                        "symbol": {
+                           "type": "CIMSymbolReference",
+                           "symbol": {
+                              "type": "CIMPolygonSymbol",
+                              "symbolLayers": [{
+                                    "type": "CIMSolidStroke",
+                                    "enable": true,
+                                    "colorLocked": true,
+                                    "capStyle": "Butt",
+                                    "joinStyle": "Round",
+                                    "lineStyle3D": "Strip",
+                                    "miterLimit": 10,
+                                    "width": 0.75,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          153,
+                                          153,
+                                          153,
+                                          25.098039627075195
+                                       ]
+                                    }
+                                 }, {
+                                    "type": "CIMSolidFill",
+                                    "enable": true,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          255,
+                                          222,
+                                          62,
+                                          100
+                                       ]
+                                    }
+                                 }
+                              ]
+                           }
+                        },
+                        "values": [{
+                              "type": "CIMUniqueValue",
+                              "fieldValues": [
+                                 "Residential"
+                              ]
+                           }
+                        ],
+                        "visible": true
+                     }, {
+                        "type": "CIMUniqueValueClass",
+                        "label": "Industrial",
+                        "patch": "Default",
+                        "symbol": {
+                           "type": "CIMSymbolReference",
+                           "symbol": {
+                              "type": "CIMPolygonSymbol",
+                              "symbolLayers": [{
+                                    "type": "CIMSolidStroke",
+                                    "enable": true,
+                                    "colorLocked": true,
+                                    "capStyle": "Butt",
+                                    "joinStyle": "Round",
+                                    "lineStyle3D": "Strip",
+                                    "miterLimit": 10,
+                                    "width": 0.75,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          153,
+                                          153,
+                                          153,
+                                          25.098039627075195
+                                       ]
+                                    }
+                                 }, {
+                                    "type": "CIMSolidFill",
+                                    "enable": true,
+                                    "color": {
+                                       "type": "CIMRGBColor",
+                                       "values": [
+                                          133,
+                                          133,
+                                          133,
+                                          100
+                                       ]
+                                    }
+                                 }
+                              ]
+                           }
+                        },
+                        "values": [{
+                              "type": "CIMUniqueValue",
+                              "fieldValues": [
+                                 "Industrial"
+                              ]
+                           }
+                        ],
+                        "visible": true
+                     }
+                  ]
+               }
+            ],
+            "useDefaultSymbol": true,
+            "valueExpressionInfo": {
+               "type": "CIMExpressionInfo",
+               "title": "Building Occupancy Classification",
+               "expression": "//expression to remove blank attributes.\n\nvar e = IsEmpty($feature[\"OCC_CLS\"])\nvar b = $feature[\"OCC_CLS\"]\n\nIif(e == true, \"Unknown\", b)",
+               "returnType": "Default"
+            },
+            "polygonSymbolColorTarget": "Fill"
+         },
+         "scaleSymbols": true,
+         "snappable": true
+      }
+   ],
+   "rGBColorProfile": "sRGB IEC61966-2.1",
+   "cMYKColorProfile": "U.S. Web Coated (SWOP) v2",
+   "elevationSurfaceLayerDefinitions": [{
+         "type": "CIMElevationSurfaceLayer",
+         "name": "Ground",
+         "uRI": "CIMPATH=Map/16df13fea8a64808922fb08541373c2c.json",
+         "sourceModifiedTime": {
+            "type": "TimeInstant"
+         },
+         "useSourceMetadata": true,
+         "description": "Ground",
+         "expanded": true,
+         "layerType": "Operational",
+         "showLegends": false,
+         "visibility": true,
+         "displayCacheType": "Permanent",
+         "maxDisplayCacheAge": 5,
+         "showPopups": true,
+         "serviceLayerID": -1,
+         "refreshRate": -1,
+         "refreshRateUnit": "esriTimeUnitsSeconds",
+         "blendingMode": "Alpha",
+         "allowDrapingOnIntegratedMesh": true,
+         "elevationMode": "BaseGlobeSurface",
+         "verticalExaggeration": 1,
+         "color": {
+            "type": "CIMRGBColor",
+            "values": [
+               255,
+               255,
+               255,
+               100
+            ]
+         },
+         "surfaceTINShadingMode": "Smooth"
+      }
+   ]
+}
