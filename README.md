@@ -1,2 +1,2 @@
-# EPA-HSRP-WESTTool
-EPA-HSRP-WESTTool
+# Building and Environment Estimation Program (BEEP)
+Building and Environment Estimation Program (BEEP)
